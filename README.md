@@ -1,6 +1,6 @@
 # 7558-scouting-app-2023
 
-This template should help get you started developing with Vue 3 in Vite.
+Scouting app for the 2023 Charged Up season
 
 ## Recommended IDE Setup
 
