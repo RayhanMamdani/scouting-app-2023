@@ -1,10 +1,10 @@
 <template>
     <div class="defence">
         <center>
-            <p>Defence</p>
+            <p style="font-size:25px;">Defence</p>
             <div class="buttons has-addons is-centered">
-                <button class="button is-success">Yes</button>
-                <button class="button is-danger">No</button>
+                <button class="button is-success is-large is-responsive">Yes</button>
+                <button class="button is-danger is-large is-responsive">No</button>
             </div>
         </center>
     </div>
