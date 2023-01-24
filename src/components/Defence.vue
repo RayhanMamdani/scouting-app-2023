@@ -2,8 +2,10 @@
     <div class="defence">
         <center>
             <p>Defence</p>
-            <button class="button is-success">Yes</button>
-            <button class="button is-danger ml-5">No</button>
+            <div class="buttons has-addons is-centered">
+                <button class="button is-success">Yes</button>
+                <button class="button is-danger">No</button>
+            </div>
         </center>
     </div>
 </template>
