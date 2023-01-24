@@ -1,6 +1,6 @@
 <template>
     <center>
-        <RouterLink to="/game">
+        <RouterLink to="/auto">
             <button class="button is-danger is-large">Start</button>
         </RouterLink>
         <p>

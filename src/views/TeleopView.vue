@@ -3,6 +3,8 @@ import Pickup from '../components/Pickup.vue'
 import Defence from '../components/Defence.vue'
 import Grid from '../components/Grid.vue'
 import Chargestation from '../components/Chargestation.vue'
+import EndgameButton from '../components/EndgameButton.vue';
+import TableContents from '../components/TableContents.vue';
 
 </script>
 
@@ -22,7 +24,6 @@ import Chargestation from '../components/Chargestation.vue'
                 </div>
             </div>
         </div> -->
-        
         <div class="columns">
             <div class="column">
                 <Pickup/>
@@ -40,7 +41,12 @@ import Chargestation from '../components/Chargestation.vue'
                 <Chargestation/>
             </div>
         </div>
+
         
+        
+        <div class="column is-one-quarter">
+            <TableContents />
+        </div>
     </main>
 </template>
 
