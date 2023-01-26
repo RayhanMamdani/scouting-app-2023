@@ -5,6 +5,7 @@ import Grid from '../components/Grid.vue'
 import Chargestation from '../components/Chargestation.vue'
 import EndgameButton from '../components/EndgameButton.vue';
 import TableContents from '../components/TableContents.vue';
+import CycleTime from '../components/CycleTime.vue';
 
 </script>
 
@@ -43,10 +44,15 @@ import TableContents from '../components/TableContents.vue';
         </div>
 
         
-        
-        <div class="column is-one-quarter">
-            <TableContents />
+        <div class="columns">
+            <div class="column is-one-quarter">
+                <TableContents />
+            </div>
+            <div class="column is-one-quarter">
+                <CycleTime />
+            </div>
         </div>
+        
     </main>
 </template>
 
