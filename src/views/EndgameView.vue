@@ -5,19 +5,22 @@
 </script>
 
 <template>
-    <main>
-        <div class="columns">
-            <div class="column">
-                <TableContents />
+    <container width="100%">
+        <main>
+            <div class="columns">
+                <div class="column">
+                    <TableContents />
+                </div>
+                <div class="column">
+                    <EndgameNotes/>
+                </div>
+                <div class="column">
+                    <Chargestation/>
+                </div>
             </div>
-            <div class="column">
-                <EndgameNotes/>
-            </div>
-            <div class="column">
-                <Chargestation/>
-            </div>
-        </div>
-    </main>
+        </main>
+    </container>
+    
 </template>
 
 <style>
