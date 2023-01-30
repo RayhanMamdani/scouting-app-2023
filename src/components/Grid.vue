@@ -40,6 +40,6 @@
                     <button class="column is-link is-light">□</button>
             </div>
         </div>
-    </div>
+    </div> 
     <br>
 </template>
