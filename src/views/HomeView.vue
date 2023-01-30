@@ -6,13 +6,16 @@ import TableContents from '../components/TableContents.vue';
 <template>
   <div class="container">
     <main>
-      <TableContents />
+      
       <p>
               Team Number: <input type="number" style="margin-top: 20px">
           </p>
           <p>
               Match Number: <input type="number" style="margin-top: 20px"> 
           </p>
+          <RouterLink to="/">
+                    <button class="column is-full button is-danger is-large is-responsive">Scout Match</button>
+                </RouterLink>
     </main>
   </div>
   
