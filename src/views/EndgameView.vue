@@ -12,7 +12,8 @@
                     <TableContents />
                 </div>
                 <div class="column">
-                    <EndgameNotes/>
+                    <p>General Scouting Notes</p>
+    <textarea class="textarea" placeholder="Type here..."></textarea>
                 </div>
                 <div class="column">
                     <Chargestation/>

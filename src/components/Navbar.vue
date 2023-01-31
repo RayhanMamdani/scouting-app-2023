@@ -1,25 +1,22 @@
 <template>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-    </a>
-
+    <nav class="navbar is-dark m-0 p-0" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand ml-2">
+        <img src= "../assets/AltF4Logo.png" width="126" height="75">
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
-
+  
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item">
-        Home
+        Scout
       </a>
 
       <a class="navbar-item">
-        Documentation
+        Competitions
       </a>
 
       <div class="navbar-item has-dropdown is-hoverable">
@@ -48,9 +45,7 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
+
           <a class="button is-light">
             Log in
           </a>
@@ -60,3 +55,17 @@
   </div>
 </nav>
 </template>
+
+<style>
+.navbar{
+  
+    top: auto;
+    background-color: black;
+
+}
+
+a {
+  color: blue;
+  text-decoration: none; /* no underline */
+}
+</style>

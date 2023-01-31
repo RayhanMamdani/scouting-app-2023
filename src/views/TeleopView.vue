@@ -11,20 +11,7 @@ import CycleTime from '../components/CycleTime.vue';
 
 <template>
     <main>
-        <!-- <div class="tile is-ancestor">
-            <div class="tile is-parent is-vertical">
-                <div class="tile is-child">
-                </div>
-                <div class="tile is-child"></div>
-            </div>
-            <div class="tile is-parent is-vertical">
-                <div class="tile is-child">
-                </div>
-                <div class="tile is-child">
-                    
-                </div>
-            </div>
-        </div> -->
+      
         <div class="columns">
             <div class="column">
                 <Pickup/>

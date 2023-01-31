@@ -1,7 +1,8 @@
 
 <template>
-
+<nav>
   <Navbar/>
+</nav>
   <div id="page">
     <!--Background and Welcome messsage plus a small set of sentences-->
     <section id="showcase" class="text-light text-center text-small-center ">
@@ -88,7 +89,6 @@ export default {
 </script>
 
 <style scoped>
-
 
 
 #text-div {
