@@ -1,153 +1,81 @@
 <template>
-    <div class = "container">
-        <div class="row text-center">
-        <!-- Climb -->
-        <div class="col-md">
-            <div class="card bg-dark text-light py-3 mx-auto">
-        <section>
-            <div>
-                <h3>Climb</h3>
-            </div>
-            <div>
-                <button class = "btn mb-2 mt-3" v-on:click="climb=0"  :style="[climb === 0 ? 'border-image: linear-gradient(315deg, #7d77ff, #ff9482) 1; border-style: solid; border-width: 3px; background-color: white; font-weight: bold;' : 'background-image: linear-gradient(315deg, #7d77ff 0%, #ff9482 100%); color: white;']">On Field</button>
-            </div>
-            <div>
-                <button class = "btn my-2" v-on:click="climb=1"  :style="[climb === 1 ? 'border-image: linear-gradient(315deg, #7d77ff, #ff9482) 1; border-style: solid; border-width: 3px; background-color: white; font-weight: bold;' : 'background-image: linear-gradient(315deg, #7d77ff 0%, #ff9482 100%); color: white;']">In Hab</button>
-            </div>
-            <div>
-                <button class = "btn my-2" v-on:click="climb=2"  :style="[climb === 2 ? 'border-image: linear-gradient(315deg, #7d77ff, #ff9482) 1; border-style: solid; border-width: 3px; background-color: white; font-weight: bold;' : 'background-image: linear-gradient(315deg, #7d77ff 0%, #ff9482 100%); color: white;']">Low Level</button>
-            </div>
-            <div>
-                <button class = "btn my-2" v-on:click="climb=3"  :style="[climb === 3 ? 'border-image: linear-gradient(315deg, #7d77ff, #ff9482) 1; border-style: solid; border-width: 3px; background-color: white; font-weight: bold;' : 'background-image: linear-gradient(315deg, #7d77ff 0%, #ff9482 100%); color: white;']">High Level</button>
-            </div>
-        </section>
-        </div>
-        </div>
-        <div class="col-md">
-            <div class = "card mx-auto bg-light text-dark py-3 mx-auto">
-        <!-- Misc -->
-        <section>
-            <h2>Report</h2>
-            <div>
-                <input v-model="scoutName" class = "bg-light mt-5 mb-4" type = textarea id = 'scoutName' placeholder="Scout Name">
-            </div>
-            <textarea v-model="comments" class = "bg-light mt-4 mb-1" id = 'comments' placeholder="Comments"/>
-        </section>
-        
-        <!-- Outcome -->
-        <section class="mb-2">
-            <div class="pt-1">
-                <input class="form-check-input mx-auto" type="checkbox" id="flexSwitchCheckChecked" v-model="win" checked>
-                <label class="form-check-label mx-auto">Win</label>
-            </div>
-            <div class="pt-2">
-                <input class="form-check-input mx-auto" type="checkbox" id="flexSwitchCheckChecked" v-model="rocket" checked>
-                <label class="form-check-label mx-auto">Rocket</label>
-            </div>
-        </section>
+    <div>
 
-    <!-- Submit -->
-        <section>
-            <!--Probably a v-if on an error message here or something -->
-            <button id = "submit" class = "btn my-2 text-white" v-on:click="">Submit</button>
-        </section>
-        </div>
-        </div>
-        <div class="col-md">
-            <div class="card bg-dark text-light py-3 mx-auto">
-        <!-- Defense -->
-        <section>
-            <div>
-                <h3>Defense</h3>
-            </div>
-            <div>
-                <button class = "btn mb-2 mt-3" v-on:click="defense=0"  :style="[defense === 0 ? 'border-image: linear-gradient(315deg, #7d77ff, #ff9482) 1; border-style: solid; border-width: 3px; background-color: white; font-weight: bold;' : 'background-image: linear-gradient(315deg, #7d77ff 0%, #ff9482 100%); color: white;']">Didn't Play (0)</button>
-            </div>
-            <div>
-                <button class = "btn my-2" v-on:click="defense=1"  :style="[defense === 1 ? 'border-image: linear-gradient(315deg, #7d77ff, #ff9482) 1; border-style: solid; border-width: 3px; background-color: white; font-weight: bold;' : 'background-image: linear-gradient(315deg, #7d77ff 0%, #ff9482 100%); color: white;']">Negligible (1)</button>
-            </div>
-            <div>
-                <button class = "btn my-2" v-on:click="defense=2"  :style="[defense === 2 ? 'border-image: linear-gradient(315deg, #7d77ff, #ff9482) 1; border-style: solid; border-width: 3px; background-color: white; font-weight: bold;' : 'background-image: linear-gradient(315deg, #7d77ff 0%, #ff9482 100%); color: white;']">Weak (2)</button>
-            </div>
-            <div>
-                <button class = "btn my-2" v-on:click="defense=3"  :style="[defense === 3 ? 'border-image: linear-gradient(315deg, #7d77ff, #ff9482) 1; border-style: solid; border-width: 3px; background-color: white; font-weight: bold;' : 'background-image: linear-gradient(315deg, #7d77ff 0%, #ff9482 100%); color: white;']">Effective (3)</button>
-            </div>
-            <div>
-                <button class = "btn my-2" v-on:click="defense=4"  :style="[defense === 4 ? 'border-image: linear-gradient(315deg, #7d77ff, #ff9482) 1; border-style: solid; border-width: 3px; background-color: white; font-weight: bold;' : 'background-image: linear-gradient(315deg, #7d77ff 0%, #ff9482 100%); color: white;']">Unbreakable (4)</button>
-            </div>
-        </section>
-        </div>
-        </div>
+        <div class="field">
+  <label class="label">Scout Name</label>
+  <div class="control">
+    <input class="input" type="text" placeholder="Name">
+  </div>
+</div>
+
+
+<div class="field">
+  <label class="label">Chargestation Endgame</label>
+  <div class="control">
+    <div class="select">
+      <select>
+        <option>Docked</option>
+        <option>Engaged</option>
+        <option>Ground</option>
+      </select>
     </div>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Defense</label>
+  <div class="control">
+    <div class="select">
+      <select>
+        <option>0 - No Defence</option>
+        <option>1 - Rarely Defends</option>
+        <option>2 - Some Defence</option>
+        <option>3 - Frequent Defence</option>
+        <option>4 - Only Plays Defence</option>
+      </select>
     </div>
+  </div>
+</div>
+
+
+<div class="field ">
+    <label class="label"> Win </label>
+    <div class="control">
+        <label class="radio">
+          <input type="radio" name="member">
+          Yes
+        </label>
+        <label class="radio">
+          <input type="radio" name="member">
+          No
+        </label>
+
+      </div>
+</div>
+
+<div class="field">
+    <label class="label"> RP Gained</label>
+    <input class="input" type="number" placeholder="RP">
+</div>
+
+
+
+<div class="field">
+  <label class="label">Comments</label>
+  <div class="control">
+<textarea class="textarea" placeholder="Special comments on this robot"></textarea>
+  </div>
+</div>
+
+
+
+<div class="field is-grouped">
+  <div class="control">
+    <button class="button is-primary">Submit</button>
+  </div>
+  <div class="control">
+    <button class="button is-link is-light">Cancel</button>
+  </div>
+</div>
+</div>
 </template>
-
-<script>
-import {watchEffect, ref, defineComponent} from "vue";
-
-export default ({
-    data() {
-        return {
-            climb: 0,
-            defense: 0,
-            scoutName: '',
-            comments: '',
-            win: false,
-            rocket: false
-        }
-    },
-    created() {
-       /* 
-        //Emits data to parent component whenever there is a change in data
-        watchEffect(() => {
-            this.$emit('sendData', {
-                climb: this.climb,
-                defense: this.defense,
-                scoutName: this.scoutName,
-                comments: this.comments,
-                win: this.win,
-                rocket: this.rocket
-            })
-        })
-        */
-    }
-
-})
-</script>
-
-<style scoped>
-.card{
-    width: 85%;
-    height: 100%;
-}
-.row.display-flex {
-  display: flex;
-  flex-wrap: wrap;
-}
-.col{
-  align-items: center;
-}
-#scoutName{
-  border-bottom: 2px solid black;
-  border-right: white;
-  border-left: white;
-  border-top: white;
-  width: 62.5%
-}
-#comments{
-  border-bottom: 2px solid black;
-  border-right: white;
-  border-left: white;
-  border-top: white;
-  width: 62.5%
-}
-.form-check-label{
-  padding-left: 0.3em;
-}
-#flexSwitchCheckChecked{
-    background-color: black;
-}
-#submit {
-    background-image: linear-gradient(315deg, #7d77ff 0%, #ff9482 100%);
-}
-</style>

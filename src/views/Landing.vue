@@ -21,7 +21,7 @@
       <div class="columns is-centered">
 
         <div class="column is-3">
-          <div @click="this.$router.push('/teleop')" class="card">
+          <div @click="this.$router.push('/Home')" class="card">
             <div class="card-content">
               <h2 class="title is-4 has-text-white">Test</h2>
               <p class="subtitle is-6 has-text-white">
@@ -78,6 +78,13 @@
 import Navbar from '../components/Navbar.vue';
 
 export default {
+
+  data(){
+    return{
+      gameState:"auto"
+    }
+
+  },
     name: "Landing",
     methods: {
         test() {

@@ -26,14 +26,11 @@ import TableContents from '../components/TableContents.vue';
   </div>
 </div>
       <span class="buttons is-centered">
-        <RouterLink to="/auto">
+        <RouterLink to="/ScoutMatch">
           <button class=" is button is-danger is-large is-responsive mt-5">Scout Match</button>
         </RouterLink>
       </span>
         
-      
-    
-    
   </div>
 
 </template>
