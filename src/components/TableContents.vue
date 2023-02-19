@@ -1,6 +1,6 @@
 <template>
     <main>
-        <center>
+        
             <div class="column box">
                 <RouterLink to="/">
                     <button class="column is-full button is-danger is-large is-responsive">Start</button>
@@ -15,6 +15,7 @@
                     <button class="column is-full button is-light is-large is-responsive">Endgame</button>
                 </RouterLink>
             </div>
-        </center>
+            
+        
     </main>
 </template>
