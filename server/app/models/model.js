@@ -1,6 +1,6 @@
 module.exports = mongoose => {
-    const Match = mongoose.model(
-      "match",
+    const Team = mongoose.model(
+      "team",
       mongoose.Schema(
         {
             // PUT WHATEVER MATCH DATA WE NEED IN HERE !!!
@@ -12,5 +12,5 @@ module.exports = mongoose => {
       )
     );
   
-    return Match;
+    return Team;
   };

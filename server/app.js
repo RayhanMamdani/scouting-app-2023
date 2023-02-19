@@ -24,11 +24,6 @@ app.get('/', function (req,res) {
     res.sendFile(path + "index.html");
   });
 
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "hehehehaw" });
-});
-
 require("./app/routes/routes")(app);
 
 // set port, listen for requests

@@ -1,28 +1,28 @@
 module.exports = app => {
-    const Matches = require("../controllers/controller.js");Matches
+    const Teams = require("../controllers/controller.js");Teams
   
     var router = require("express").Router();
   
-    // Create a new Match
-    router.post("/", Matches.create);
+    // Create a new Team
+    router.post("/", Teams.create);
   
-    // Retrieve all Matches
-    router.get("/", Matches.findAll);
+    // Retrieve all Teams
+    router.get("/", Teams.findAll);
   
-    // Retrieve all published Matches
-    router.get("/published", Matches.findAllPublished);
+    // Retrieve all published Teams
+    router.get("/published", Teams.findAllPublished);
   
-    // Retrieve a single Match with id
-    router.get("/:id", Matches.findOne);
+    // Retrieve a single Team with id
+    router.get("/:id", Teams.findOne);
   
-    // Update a Match with id
-    router.put("/:id", Matches.update);
+    // Update a Team with id
+    router.put("/:id", Teams.update);
   
-    // Delete a Match with id
-    router.delete("/:id", Matches.delete);
+    // Delete a Team with id
+    router.delete("/:id", Teams.delete);
   
-    // Delete all Matches
-    router.delete("/", Matches.deleteAll);
+    // Delete all Teams
+    router.delete("/", Teams.deleteAll);
   
-    app.use('/api/Matches', router);
+    app.use('/api/Teams', router);
   };
