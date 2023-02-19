@@ -1,7 +1,3 @@
-<script setup>
-import Start from '../components/Start.vue'
-import TableContents from '../components/TableContents.vue';
-</script>
 
 <template>
   <div class=" is-flex ">
@@ -15,25 +11,42 @@ import TableContents from '../components/TableContents.vue';
     <div class="field">
   <label class="label">Team Number:</label>
   <div class="control">
-    <input class="input" type="number" >
+    <input class="input" type="number" id="teamNum" >
   </div>
 </div>
 
 <div class="field">
-  <label class="label">Match Number:</label>
+  <label class="label" >Match Number:</label>
   <div class="control">
-    <input class="input" type="number">
+    <input class="input" type="number" id="matchNum">
   </div>
 </div>
       <span class="buttons is-centered">
-        <RouterLink to="/ScoutMatch">
-          <button class=" is button is-danger is-large is-responsive mt-5">Scout Match</button>
+          <RouterLink to="ScoutMatch">
+          <button @click="scoutCheck" class=" is button is-danger is-large is-responsive mt-5">Scout Match</button>
         </RouterLink>
       </span>
         
   </div>
 
 </template>
+
+<script setup>
+
+
+const scoutCheck = () => {
+  var matchNum = document.getElementById('matchNum').value
+var teamNum = document.getElementById('teamNum').value
+
+console.log(matchNum);
+console.log(teamNum);
+ if((matchNum > 0 && matchNum < 100) && (teamNum > 0 && teamNum <10000)){
+  
+ }else{
+  alert('please check you have entered correct data');
+ }
+}
+</script>
 
 <style scoped>
 div {
