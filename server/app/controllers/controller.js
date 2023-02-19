@@ -4,16 +4,20 @@ const Team = db.teams;
 // Create and Save a new Team
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.title) {
+  if (!req.body.teamNumber) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
-  // Create a Team
+  // Create a Team (CHANGE MATCH DATA PARAMS HERE)
   const team = new Team({
-    title: req.body.title,
-    description: req.body.description,
-    published: req.body.published ? req.body.published : false
+    teamNumber: req.body.teamNumber,
+    matchNumber: req.body.matchNumber,
+    gameState: req.body.gameState,
+    community: req.body.community,
+    chargestation: req.body.chargestation,
+    gpTotal: req.body.gpTotal,
+    gpScore: req.body.gpScore
   });
 
   // Save Team in the database
@@ -30,7 +34,7 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Teames from the database.
+// Retrieve all Teams from the database.
 exports.findAll = (req, res) => {
     const title = req.query.title;
     var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
@@ -42,7 +46,7 @@ exports.findAll = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving Teames."
+            err.message || "Some error occurred while retrieving Teams."
         });
       });
 };
