@@ -7,8 +7,6 @@
     <input class="input" type="text" placeholder="Name">
   </div>
 </div>
-
-
 <div class="field">
   <label class="label">Chargestation Endgame</label>
   <div class="control">
@@ -16,7 +14,6 @@
       <select>
         <option>Docked</option>
         <option>Engaged</option>
-        <option>Ground</option>
       </select>
     </div>
   </div>
@@ -71,7 +68,7 @@
 
 <div class="field is-grouped">
   <div class="control">
-    <button class="button is-primary">Submit</button>
+    <button @click="this.$router.push('/')" class="button is-primary">Submit</button>
   </div>
   <div class="control">
     <button class="button is-link is-light">Cancel</button>

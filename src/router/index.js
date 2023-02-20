@@ -26,4 +26,23 @@ const router = createRouter({
   ]
 })
 
+// Route guard
+
+// router.beforeEach((to, from, next) => {
+//   const publicPages = ['/'];
+//   const authRequired = !publicPages.includes(to.path);
+  
+
+//   // trying to access a restricted page + not logged in
+//   // redirect to login page
+//   if (authRequired) {
+//    router.push(from.path);
+//   } else if(to.path === '/'){
+//       next();
+     
+//   } else {
+//       next();
+//   }
+// });
+
 export default router
