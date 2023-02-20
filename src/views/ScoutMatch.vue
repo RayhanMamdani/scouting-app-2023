@@ -1,4 +1,5 @@
 
+
 <template>
     
     <div class="columns is-flex is-justify-content-center" style=" margin-top: 5%; margin-bottom: 5%">
@@ -14,13 +15,17 @@
             :class="[gameData.gameState === 'endgame' ? 'button has-text-centered mx-2' : ' button is-dark has-text-centered mx-2']"
             @click="gameData.setGameState('endgame')">Endgame</button>
 
+
     </div>
 
     <div class="columns ">
 
         <div class="column is-one-quarter ">
             <div class="tile is-parent is-vertical is-pulled-right is-centered card"
+
+
                 v-show="gameData.gameState == 'auto' || gameData.gameState === 'teleop'">
+
                 <p class="title is-size-6 my-0 has-text-centered">Pickup</p>
                 <button class="button is-medium tile is-dark has-text-centered my-1">Ground</button>
                 <button class="button is-medium tile is-dark has-text-centered my-1">Sub 1</button>
@@ -31,8 +36,10 @@
         </div>
 
         <div class=" column box p-5  ">
+
             <Grid v-show="gameData.gameState == 'auto' || gameData.gameState === 'teleop'" />
             <Endgame v-show="gameData.gameState == 'endgame'" />
+
 
         </div>
 
@@ -46,6 +53,7 @@
                 </div>
                 <Chargestation v-show="gameData.gameState == 'auto'"/>
                 <Community v-show="gameData.gameState == 'teleop'"/>
+
             </div>
 
         </div>
@@ -63,6 +71,7 @@
         </div>
 
     </div>
+
 </template>
 <script setup>
 import Grid from '../components/Grid.vue'
@@ -78,3 +87,4 @@ const test = (msg) => {
 }
 
 </script>
+

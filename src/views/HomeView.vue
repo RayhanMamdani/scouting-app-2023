@@ -61,6 +61,7 @@ export default {
 }
 </script>
 
+
 <style scoped>
 div {
   margin: auto;
@@ -69,5 +70,4 @@ div {
 .box {
   width: 25%;
 
-}
 </style>

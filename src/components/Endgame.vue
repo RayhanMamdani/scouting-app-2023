@@ -7,8 +7,6 @@
     <input class="input" type="text" placeholder="Name">
   </div>
 </div>
-
-
 <div class="field">
   <label class="label">Chargestation Endgame</label>
   <div class="control">
@@ -16,21 +14,6 @@
       <select>
         <option>Docked</option>
         <option>Engaged</option>
-        <option>Mobility</option>
-        <option>None</option>
-      </select>
-    </div>
-  </div>
-</div>
-
-<div class="field">
-  <label class="label">Cycling Over Chargestation?</label>
-  <div class="control">
-    <div class="select">
-      <select>
-        <option>No</option>
-        <option>Yes</option>
-        
       </select>
     </div>
   </div>
