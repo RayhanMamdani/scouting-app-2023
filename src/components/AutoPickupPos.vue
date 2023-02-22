@@ -5,7 +5,7 @@ const gameData = useGameDataStore();
 <template>
     <div class="container">
         <div class="tile is-parent is-vertical is-pulled-right is-centered card">
-                <p class="title is-size-6 my-0 has-text-centered">Piece Pickup</p>
+                <label class="label is-size-6 my-0 has-text-centered">Piece Pickup</label>
                 <button :class="[gameData.autoPickupPos === '1' ? 'button is-medium tile is-primary has-text-centered my-1' : 'button is-medium tile is-dark has-text-centered my-1']" 
                         @click="gameData.setAutoPickupPos('1')">1 (Wall)</button>
                 <button :class="[gameData.autoPickupPos === '2' ? 'button is-medium tile has-text-centered my-1' : 'button is-medium tile is-dark has-text-centered my-1']" 

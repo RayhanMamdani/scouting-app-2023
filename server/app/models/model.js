@@ -1,21 +1,29 @@
 module.exports = mongoose => {
-    const Team = mongoose.model(
-      "team",
+    const Match = mongoose.model(
+      "match",
       mongoose.Schema(
         {
             // PUT WHATEVER MATCH DATA WE NEED IN HERE !!! 
-            // will likely also end up needing pickup type, scout name, endgame chargestation, defense, win(?), rp gained(?), and endgame comments
-          teamNumber: Number,
-          matchNumber: Number,
-          gameState: String,
+          matchNum: Number,
+          teamNum: Number,
           community: Boolean,
-          chargestation: String,
+          autoCS: String,
           gpTotal: Number,
-          gpScore: Array
+          gpAutoTotal: Number,
+          gpTeleopTotal: Number,
+          gpAutoScore: Number,
+          gpTeleopScore: Number,
+          gpTotalScore: Number,
+          autoStartPos: String,
+          pickupType: String,
+          autoPickupPos: String,
+          CSCycle: Boolean,
+          endgameStartTime: String,
+          endgameCS: String,
         },
         { timestamps: true }
       )
     );
   
-    return Team;
+    return Match;
   };

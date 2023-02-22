@@ -26,13 +26,20 @@
 
                 v-show="gameData.gameState === 'teleop'">
 
-                <p class="title is-size-6 my-0 has-text-centered">Pickup Type</p>
+                <label class="label is-size-6 my-0 has-text-centered">Pickup Type</label>
                 <button :class="[gameData.pickupType === 'Ground' ? 'button is-medium tile is-primary has-text-centered my-1' : 'button is-medium tile is-dark has-text-centered my-1']" 
                         @click="gameData.setPickupType('Ground')">Ground</button>
                 <button :class="[gameData.pickupType === 'Sub 1' ? 'button is-medium tile has-text-centered my-1' : 'button is-medium tile is-dark has-text-centered my-1']" 
                         @click="gameData.setPickupType('Sub 1')">Sub 1</button>
                 <button :class="[gameData.pickupType === 'Sub 2' ? 'button is-medium tile is-danger has-text-centered my-1' : 'button is-medium tile is-dark has-text-centered my-1']" 
                         @click="gameData.setPickupType('Sub 2')">Sub 2</button>
+                <label class="label is-size-6 my-2 has-text-centered">Endgame Start Time</label>
+                <div class="control"> 
+                    <input class="input" type="text" placeholder="0:00" id="input2" @input="setEndgameStartTime()">
+                </div>
+
+
+
 
             </div>
             <div class="tile is-parent is-vertical is-pulled-right is-centered card" v-show="gameData.gameState === 'auto'">
@@ -52,12 +59,12 @@
         <div class="column is-one-quarter">
             <div class="tile is-parent is-vertical is-pulled-left is-centered p-3 card"
                 v-show="gameData.gameState == 'auto' || gameData.gameState === 'teleop'">
-                <p class="title is-size-6 has-text-centered mb-2">GP Scored:</p>
+                <label class="label is-size-6 has-text-centered mb-2">GP Scored:</label>
                 <div class="buttons tile has-addons has-text-centered is-pulled-left ">
-                    <button class=" button is-large is-dark column px-5" disabled>{{ gameData.gpTotal }}</button>
+                    <button class=" button is-large is-dark column px-5 is-static" >{{ gameData.gpTotal }}</button>
                     <button @click="gameData.gpRemove()" class=" button is-large is-dark column px-5">-</button>
                 </div>
-                <p class="title is-size-6 has-text-centered mb-2">GP Total Score:</p>
+                <label class="label is-size-6 has-text-centered mb-2">GP Total Score:</label>
                 <div class="card has-text-centered mb-2">
                     <p class="title is-size-10 mb-2">{{ gameData.gpTotalScore }}</p>
                 </div>
@@ -96,9 +103,12 @@ import { useGameDataStore } from '../stores/gameData'
 
 const gameData = useGameDataStore();
 
+function setEndgameStartTime() {
+    const time = document.getElementById('input2').value;
+    gameData.setEndgameStartTime(time);
+}
+
 const test = (msg) => {
     console.log(msg);
 }
-
 </script>
-

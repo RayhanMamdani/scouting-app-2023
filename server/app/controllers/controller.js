@@ -1,74 +1,83 @@
 const db = require("../models");
-const Team = db.teams;
+const Match = db.matches;
 
-// Create and Save a new Team
+// Create and Save a new Match
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.teamNumber) {
+  if (!req.body.teamNum) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
-  // Create a Team (CHANGE MATCH DATA PARAMS HERE)
-  const team = new Team({
-    teamNumber: req.body.teamNumber,
-    matchNumber: req.body.matchNumber,
-    gameState: req.body.gameState,
+  // Create a Match (CHANGE MATCH DATA PARAMS HERE)
+  const match = new Match({
+    matchNum: req.body.matchNum,
+    teamNum: req.body.teamNum,
     community: req.body.community,
-    chargestation: req.body.chargestation,
+    autoCS: req.body.autoCS,
     gpTotal: req.body.gpTotal,
-    gpScore: req.body.gpScore
+    gpAutoTotal: req.body.gpAutoTotal,
+    gpTeleopTotal: req.body.gpTeleopTotal,
+    gpAutoScore: req.body.gpAutoScore,
+    gpTeleopScore: req.body.gpTeleopScore,
+    gpTotalScore: req.body.gpTotalScore,
+    autoStartPos: req.body.autoStartPos,
+    pickupType: req.body.pickupType,
+    autoPickupPos: req.body.autoPickupPos,
+    CSCycle: req.body.CSCycle,
+    endgameStartTime: req.body.endgameStartTime,
+    endgameCS: req.body.endgameCS,
   });
 
-  // Save Team in the database
-  team
-    .save(team)
+  // Save Match in the database
+  match
+    .save(match)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Team."
+          err.message || "Some error occurred while creating the Match."
       });
     });
 };
 
-// Retrieve all Teams from the database.
+// Retrieve all Matches from the database.
 exports.findAll = (req, res) => {
     const title = req.query.title;
     var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
   
-    Team.find(condition)
+    Match.find(condition)
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving Teams."
+            err.message || "Some error occurred while retrieving Matches."
         });
       });
 };
 
-// Find a single Team with an id
+// Find a single Match with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Team.findById(id)
+    Match.findById(id)
       .then(data => {
         if (!data)
-          res.status(404).send({ message: "Not found Team with id " + id });
+          res.status(404).send({ message: "Not found Match with id " + id });
         else res.send(data);
       })
       .catch(err => {
         res
           .status(500)
-          .send({ message: "Error retrieving Team with id=" + id });
+          .send({ message: "Error retrieving Match with id=" + id });
       });
 };
 
-// Update a Team by the id in the request
+// Update a Match by the id in the request
 exports.update = (req, res) => {
     if (!req.body) {
         return res.status(400).send({
@@ -78,70 +87,70 @@ exports.update = (req, res) => {
     
       const id = req.params.id;
     
-      Team.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+      Match.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
         .then(data => {
           if (!data) {
             res.status(404).send({
-              message: `Cannot update Team with id=${id}. Maybe Team was not found!`
+              message: `Cannot update Match with id=${id}. Maybe Match was not found!`
             });
-          } else res.send({ message: "Team was updated successfully." });
+          } else res.send({ message: "Match was updated successfully." });
         })
         .catch(err => {
           res.status(500).send({
-            message: "Error updating Team with id=" + id
+            message: "Error updating Match with id=" + id
           });
         });
 };
 
-// Delete a Team with the specified id in the request
+// Delete a Match with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Team.findByIdAndRemove(id)
+    Match.findByIdAndRemove(id)
       .then(data => {
         if (!data) {
           res.status(404).send({
-            message: `Cannot delete Team with id=${id}. Maybe Team was not found!`
+            message: `Cannot delete Match with id=${id}. Maybe Match was not found!`
           });
         } else {
           res.send({
-            message: "Team was deleted successfully!"
+            message: "Match was deleted successfully!"
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Team with id=" + id
+          message: "Could not delete Match with id=" + id
         });
       });
 };
 
-// Delete all Teames from the database.
+// Delete all Matches from the database.
 exports.deleteAll = (req, res) => {
-    Team.deleteMany({})
+    Match.deleteMany({})
     .then(data => {
       res.send({
-        message: `${data.deletedCount} Teames were deleted successfully!`
+        message: `${data.deletedCount} Matches were deleted successfully!`
       });
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all Teames."
+          err.message || "Some error occurred while removing all Matches."
       });
     });
 };
 
-// Find all published Teames
+// Find all published Matches
 exports.findAllPublished = (req, res) => {
-    Team.find({ published: true })
+    Match.find({ published: true })
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving Teames."
+          err.message || "Some error occurred while retrieving Matches."
       });
     });
 };

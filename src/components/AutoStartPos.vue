@@ -5,7 +5,7 @@ const gameData = useGameDataStore();
 <template>
     <div class="container">
         <div class="tile is-parent is-vertical is-centered card">
-                <p class="title is-size-6 has-text-centered mb-2">Auto Start Position:</p>
+                <label class="label is-size-6 has-text-centered mb-2">Auto Start Position:</label>
                 <div class="buttons tile has-addons has-text-centered" >
                         <button @click="gameData.setAutoStartPos('Wall')"
                             :class="[gameData.autoStartPos === 'Wall' ? 'button is-primary column is-medium px-5 has-text-centered' : 'button is-dark column is-medium px-5 has-text-centered']">Wall</button>

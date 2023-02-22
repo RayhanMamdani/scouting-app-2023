@@ -43,6 +43,8 @@ export default {
     scoutCheck() {
       let matchNum = document.getElementById('matchNum').value
       let teamNum = document.getElementById('teamNum').value
+      document.getElementById('matchNum').value = null;
+      document.getElementById('teamNum').value = null;
      console.log( 'Match: ' + useTournamentStore().matchCheck(matchNum));
      console.log( 'Team: ' + useTournamentStore().teamCheck(teamNum));
 

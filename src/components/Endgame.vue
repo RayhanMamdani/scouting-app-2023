@@ -1,3 +1,10 @@
+<script setup>
+import { useGameDataStore } from '../stores/gameData';
+import MatchDataService from '../services/MatchDataService';
+const gameData = useGameDataStore();
+console.log(JSON.parse(JSON.stringify(gameData.matchData)));
+</script>
+
 <template>
     <div>
 
@@ -68,7 +75,7 @@
 
 <div class="field is-grouped">
   <div class="control">
-    <button @click="this.$router.push('/')" class="button is-primary">Submit</button>
+    <button @click="MatchDataService.create(gameData.matchData), gameData.$reset(), this.$router.push('/')" class="button is-primary">Submit</button>
   </div>
   <div class="control">
     <button class="button is-link is-light">Cancel</button>

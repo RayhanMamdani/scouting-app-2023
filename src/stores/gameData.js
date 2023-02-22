@@ -23,12 +23,52 @@ export const useGameDataStore = defineStore({
         pickupType: '',
         autoPickupPos: '',
         CSCycle: false,
-        endgameCS: "N/A", //N/A, Docked, Engaged
+        endgameStartTime: '',
+        endgameCS: "N/A", // N/A, Docked, Engaged
 
 
     }),
     getters: {
+        matchData(state) {
+            /*let match = [];
+            match.push(state.matchNum);
+            match.push(state.teamNum);
+            match.push(state.community);
+            match.push(state.autoCS);
+            match.push(state.gpTotal);
+            match.push(state.gpAutoTotal);
+            match.push(state.gpTeleopTotal);
+            match.push(state.gpAutoScore);
+            match.push(state.gpTeleopScore);
+            match.push(state.gpTotalScore);
+            match.push(state.autoStartPos);
+            match.push(state.pickupType);
+            match.push(state.autoPickupPos);
+            match.push(state.CSCycle);
+            match.push(state.endgameStartTime);
+            match.push(state.endgameCS);
+            return match;*/
 
+            let match = {
+                matchNum: state.matchNum,
+                teamNum: state.teamNum,
+                community: state.community,
+                autoCS: state.autoCS,
+                gpTotal: state.gpTotal,
+                gpAutoTotal: state.gpAutoTotal,
+                gpTeleopTotal: state.gpTeleopTotal,
+                gpAutoScore: state.gpAutoScore,
+                gpTeleopScore: state.gpTeleopScore,
+                gpTotalScore: state.gpTotalScore,
+                autoStartPos: state.autoStartPos,
+                pickupType: state.pickupType,
+                autoPickupPos: state.autoPickupPos,
+                CSCycle: state.CSCycle,
+                endgameStart: state.endgameStartTime,
+                endgameCS: state.endgameCS,
+            }
+            return match;
+        }
     },
     actions: {
         gpAdd(type, column, height){
@@ -56,13 +96,13 @@ export const useGameDataStore = defineStore({
                 // calculating total score of game pieces
                 if (gp.height == 0) {
                     this.gpTotalScore += 2;
-                    this.gpAutoScore += 2;
+                    this.gpTeleopScore += 2;
                 } else if (gp.height == 1) {
                     this.gpTotalScore += 3;
-                    this.gpAutoScore += 3;
+                    this.gpTeleopScore += 3;
                 } else if (gp.height == 2) {
                     this.gpTotalScore += 5;
-                    this.gpAutoScore += 5;
+                    this.gpTeleopScore += 5;
                 }
             }
         },
@@ -126,6 +166,10 @@ export const useGameDataStore = defineStore({
         },
         setEndgameCS(state){
             this.endgameCS = state;
+        },
+        setEndgameStartTime(time){
+            this.endgameStartTime = time;
+            console.log(this.endgameStartTime)
         }
     }
 })
