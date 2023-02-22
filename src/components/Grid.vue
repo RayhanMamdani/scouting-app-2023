@@ -13,8 +13,8 @@
         </div>
         <div class="tile is-parent is-vertical">
 
-            <button @click = "gameData.gpAdd('cone',1,2)" class="button is-large tile box is-warning is-light box has-text-centered is-responsive ">□</button>
-            <button @click = "gameData.gpAdd('cone',1,1)" class="button is-large tile box is-warning is-light box has-text-centered is-responsive">□</button>
+            <button @click = "gameData.gpAdd('cone',1,2)" class="button is-large tile box is-link is-light box has-text-centered is-responsive ">□</button>
+            <button @click = "gameData.gpAdd('cone',1,1)" class="button is-large tile box is-link is-light box has-text-centered is-responsive">□</button>
             <div class="buttons tile has-addons has-text-centered ">
                     <button @click = "gameData.gpAdd('cone',1,0)"  class="button is-large column is-warning is-light is-responsive ">△</button>
                     <button @click = "gameData.gpAdd('cone',1,0)" class=" button is-large column is-link is-light is-responsive">□</button>
