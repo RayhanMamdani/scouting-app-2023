@@ -63,7 +63,7 @@
                 </div>
                 <Chargestation v-show="gameData.gameState == 'auto'"/>
                 <Community v-show="gameData.gameState == 'teleop'"/>
-                <CycleOverChargeStation v-show="gameData.gameState === 'teleop'"/>
+                <!-- <CycleOverChargeStation v-show="gameData.gameState === 'teleop'"/> -->
 
             </div>
         </div>
