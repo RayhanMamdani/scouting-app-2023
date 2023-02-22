@@ -69,5 +69,5 @@ div {
 
 .box {
   width: 25%;
-
+}
 </style>

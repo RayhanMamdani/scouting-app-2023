@@ -6,6 +6,7 @@ export const useGameDataStore = defineStore({
     id: 'gameData',
 
     state: () => ({
+        scoutName: null,
         matchNum: null,
         teamNum:null,  
         gameState: 'auto', // 3 states auto,teleop,endgame for switching components
@@ -13,7 +14,8 @@ export const useGameDataStore = defineStore({
         chargestation: "G", //Docked: D, Engaged: E, Ground: G
         gpTotal: 0,//total number of gamepieces scored (total indexes of gamepiece array)
         gpScored: [], // score gamepiece array from grid
-        gpTotal: 0
+        gpTotal: 0,
+        defence: 0,
 
 
     }),
@@ -45,6 +47,10 @@ export const useGameDataStore = defineStore({
         },
          setTeamNum(num){
             this.teamNum = num;
+        },
+        setDefence(num){
+            this.defence = num;
+            console.log(num);
         }
     }
 })
