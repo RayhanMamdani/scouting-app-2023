@@ -1,7 +1,7 @@
 
 
 <template>
-    
+
     <div class="columns is-flex is-justify-content-center" style=" margin-top: 5%; margin-bottom: 5%">
         <button
             :class="[gameData.gameState === 'auto' ? 'button has-text-centered mx-2' : ' button is-dark has-text-centered mx-2']"
@@ -24,13 +24,19 @@
             <div class="tile is-parent is-vertical is-pulled-right is-centered card"
 
 
-                v-show="gameData.gameState == 'auto' || gameData.gameState === 'teleop'">
+                v-show="gameData.gameState === 'teleop'">
 
-                <p class="title is-size-6 my-0 has-text-centered">Pickup</p>
-                <button class="button is-medium tile is-dark has-text-centered my-1">Ground</button>
-                <button class="button is-medium tile is-dark has-text-centered my-1">Sub 1</button>
-                <button class="button is-medium tile is-dark  has-text-centered my-1">Sub 2</button>
+                <p class="title is-size-6 my-0 has-text-centered">Pickup Type</p>
+                <button :class="[gameData.pickupType === 'Ground' ? 'button is-medium tile is-primary has-text-centered my-1' : 'button is-medium tile is-dark has-text-centered my-1']" 
+                        @click="gameData.setPickupType('Ground')">Ground</button>
+                <button :class="[gameData.pickupType === 'Sub 1' ? 'button is-medium tile has-text-centered my-1' : 'button is-medium tile is-dark has-text-centered my-1']" 
+                        @click="gameData.setPickupType('Sub 1')">Sub 1</button>
+                <button :class="[gameData.pickupType === 'Sub 2' ? 'button is-medium tile is-danger has-text-centered my-1' : 'button is-medium tile is-dark has-text-centered my-1']" 
+                        @click="gameData.setPickupType('Sub 2')">Sub 2</button>
 
+            </div>
+            <div class="tile is-parent is-vertical is-pulled-right is-centered card" v-show="gameData.gameState === 'auto'">
+                <AutoPickupPos v-show="gameData.gameState === 'auto'"/>
             </div>
 
         </div>
@@ -42,7 +48,7 @@
 
 
         </div>
-
+        <!-- GP SCORED -->
         <div class="column is-one-quarter">
             <div class="tile is-parent is-vertical is-pulled-left is-centered p-3 card"
                 v-show="gameData.gameState == 'auto' || gameData.gameState === 'teleop'">
@@ -51,20 +57,25 @@
                     <button class=" button is-large is-dark column px-5" disabled>{{ gameData.gpTotal }}</button>
                     <button @click="gameData.gpRemove()" class=" button is-large is-dark column px-5">-</button>
                 </div>
+                <p class="title is-size-6 has-text-centered mb-2">GP Total Score:</p>
+                <div class="card has-text-centered mb-2">
+                    <p class="title is-size-10 mb-2">{{ gameData.gpTotalScore }}</p>
+                </div>
                 <Chargestation v-show="gameData.gameState == 'auto'"/>
                 <Community v-show="gameData.gameState == 'teleop'"/>
+                <CycleOverChargeStation v-show="gameData.gameState === 'teleop'"/>
 
             </div>
-
         </div>
+
     </div>
 
     <div class="columns">
         <div class="column is-one-quarter">
-
+            
         </div>
-        <div class="column">
-
+        <div class="column is-one-half">
+            <AutoStartPos v-show="gameData.gameState == 'auto'" class="is-centered"/>
         </div>
         <div class="column is-one-quarter">
 
@@ -78,6 +89,9 @@ import Grid from '../components/Grid.vue'
 import Chargestation from '../components/Chargestation.vue'
 import Community from '../components/Community.vue'
 import Endgame from '../components/Endgame.vue'
+import AutoStartPos from '../components/AutoStartPos.vue'
+import AutoPickupPos from '../components/AutoPickupPos.vue'
+import CycleOverChargeStation from '../components/CycleOverChargeStation.vue'
 import { useGameDataStore } from '../stores/gameData'
 
 const gameData = useGameDataStore();
