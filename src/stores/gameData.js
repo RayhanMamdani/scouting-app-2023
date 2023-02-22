@@ -78,7 +78,6 @@ export const useGameDataStore = defineStore({
             let gameState = this.gameState
             // type: Cone or Cube , height: 0-bottom 1-middle 2-top, column: 0-left 1-middle 2-right
              let gp = {type,column,height,gameState}
-             this.mostRecentPiece = gp;
             this.gpScored.push(gp);  
             this.gpTotal = this.gpScored.length;
             if (gameState === 'auto') {
@@ -111,7 +110,7 @@ export const useGameDataStore = defineStore({
             }
         },
         gpRemove(){
-            let gp = this.mostRecentPiece
+            let gp = this.gpScored[this.gpScored.length - 1]
             if (gp.gameState === 'auto') {
                 this.gpAutoTotal--;
                 if (gp.height == 0) {
