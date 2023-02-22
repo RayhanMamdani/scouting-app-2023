@@ -33,7 +33,7 @@
         </div>
 
         <div class="column is-3">
-          <div @click="this.$router.push('/Home')" class="card">
+          <div @click="this.$router.push('/teams')" class="card">
             <div class="card-content">
               <h2 class="title is-4 has-text-white">
                 Data

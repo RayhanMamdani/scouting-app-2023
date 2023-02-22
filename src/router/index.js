@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Landing from '../views/Landing.vue'
+import Data from '../views/Data.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -8,6 +9,11 @@ const router = createRouter({
       path: '/',
       name: 'Landing',
       component: Landing
+    },
+    {
+      path: '/Teams',
+      name: 'teams',
+      component: Data
     },
     {
       path: '/home',
