@@ -8,9 +8,9 @@ export const useGameDataStore = defineStore({
     state: () => ({
         scoutName: null,
         matchNum: null,
-        teamNum:null,  
+        teamNum: null,
         gameState: 'auto', // 3 states auto,teleop,endgame for switching components
-        community: false, 
+        community: false,
         autoCS: "Parked", //Docked, Engaged, Parked
         gpTotal: 0,//total number of gamepieces scored (total indexes of gamepiece array)
         gpScored: [], // score gamepiece array from grid
@@ -34,11 +34,11 @@ export const useGameDataStore = defineStore({
 
     },
     actions: {
-        gpAdd(type, column, height){
+        gpAdd(type, column, height) {
             // type: Cone or Cube , height: 0-bottom 1-middle 2-top, column: 0-left 1-middle 2-right
-             let gp = {type,column,height}
-             this.mostRecentPiece = gp;
-            this.gpScored.push(gp);  
+            let gp = { type, column, height }
+            this.mostRecentPiece = gp;
+            this.gpScored.push(gp);
             this.gpTotal = this.gpScored.length;
             if (this.gameState === 'auto') {
                 this.gpAutoTotal++;
@@ -69,7 +69,7 @@ export const useGameDataStore = defineStore({
                 }
             }
         },
-        gpRemove(){
+        gpRemove() {
             let gp = this.mostRecentPiece
             if (this.gameState === 'auto') {
                 this.gpAutoTotal--;
@@ -97,41 +97,44 @@ export const useGameDataStore = defineStore({
                     this.gpAutoScore -= 5;
                 }
             }
-            this.gpScored.splice(this.gpScored.length-1);
+            this.gpScored.splice(this.gpScored.length - 1);
             this.gpTotal = this.gpScored.length;
         },
-        setGameState(state){
+        setGameState(state) {
             this.gameState = state;
         },
-        setCommunity(state){
+        setCommunity(state) {
             this.community = state;
         },
-        setAutoCS(state){
+        setAutoCS(state) {
             this.autoCS = state;
         },
-        setMatchNum(num){
+        setMatchNum(num) {
             this.matchNum = num;
         },
-         setTeamNum(num){
+        setTeamNum(num) {
             this.teamNum = num;
         },
-        setDefence(num){
+        setDefence(num) {
             this.defence = num;
             console.log(num);
-        setAutoStartPos(position){
-            this.autoStartPos = position;
         },
-        setPickupType(state){
-            this.pickupType = state;
-        },
-        setAutoPickupPos(position){
-            this.autoPickupPos = position;
-        },
-        setCSCycle(state){
-            this.CSCycle = state;
-        },
-        setEndgameCS(state){
-            this.endgameCS = state;
+            setAutoStartPos(position){
+                this.autoStartPos = position;
+            },
+            setPickupType(state){
+                this.pickupType = state;
+            },
+            setAutoPickupPos(position){
+                this.autoPickupPos = position;
+            },
+            setCSCycle(state){
+                this.CSCycle = state;
+            },
+            setEndgameCS(state){
+                this.endgameCS = state;
+            }
         }
     }
-})
+
+);
