@@ -27,6 +27,11 @@ exports.create = (req, res) => {
     CSCycle: req.body.CSCycle,
     endgameStartTime: req.body.endgameStartTime,
     endgameCS: req.body.endgameCS,
+    defence: req.body.defence,
+    defenceType: req.body.defenceType,
+    scoutName: req.body.scoutName,
+    win: req.body.win,
+    comments: req.body.comments
   });
 
   // Save Match in the database

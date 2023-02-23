@@ -20,6 +20,11 @@ module.exports = mongoose => {
           CSCycle: Boolean,
           endgameStartTime: String,
           endgameCS: String,
+          defence: String,
+          defenceType: String,
+          scoutName: String,
+          win: Boolean,
+          comments: String
         },
         { timestamps: true }
       )

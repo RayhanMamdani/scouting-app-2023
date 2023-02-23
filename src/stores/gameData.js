@@ -14,8 +14,6 @@ export const useGameDataStore = defineStore({
         autoCS: "Parked", //Docked, Engaged, Parked
         gpTotal: 0,//total number of gamepieces scored (total indexes of gamepiece array)
         gpScored: [], // score gamepiece array from grid
-        gpTotal: 0,
-        defence: 0,
         gpAutoTotal: 0,
         gpTeleopTotal: 0,
         gpAutoScore: 0,
@@ -25,9 +23,15 @@ export const useGameDataStore = defineStore({
         autoStartPos: '',
         pickupType: '',
         autoPickupPos: '',
-        CSCycle: false,
         endgameStartTime: '',
+
+        scoutName: '',
         endgameCS: "N/A", // N/A, Docked, Engaged
+        defence: '',
+        defenceType: '',
+        CSCycle: false,
+        win: false,
+        comments: '',
 
 
     }),
@@ -67,8 +71,13 @@ export const useGameDataStore = defineStore({
                 pickupType: state.pickupType,
                 autoPickupPos: state.autoPickupPos,
                 CSCycle: state.CSCycle,
-                endgameStart: state.endgameStartTime,
+                endgameStartTime: state.endgameStartTime,
                 endgameCS: state.endgameCS,
+                defence: state.defence,
+                defenceType: state.defenceType,
+                scoutName: state.scoutName,
+                win: state.win,
+                comments: state.comments,
             }
             return match;
         }
@@ -99,13 +108,13 @@ export const useGameDataStore = defineStore({
                 // calculating total score of game pieces
                 if (gp.height == 0) {
                     this.gpTotalScore += 2;
-                    this.gpAutoScore += 2;
+                    this.gpTeleopScore += 2;
                 } else if (gp.height == 1) {
                     this.gpTotalScore += 3;
-                    this.gpAutoScore += 3;
+                    this.gpTeleopScore += 3;
                 } else if (gp.height == 2) {
                     this.gpTotalScore += 5;
-                    this.gpAutoScore += 5;
+                    this.gpTeleopScore += 5;
                 }
             }
         },
@@ -128,13 +137,13 @@ export const useGameDataStore = defineStore({
                 this.gpTeleopTotal--;
                 if (gp.height == 0) {
                     this.gpTotalScore -= 2;
-                    this.gpAutoScore -= 2;
+                    this.gpTeleopScore -= 2;
                 } else if (gp.height == 1) {
                     this.gpTotalScore -= 3;
-                    this.gpAutoScore -= 3;
+                    this.gpTeleopScore -= 3;
                 } else if (gp.height == 2) {
                     this.gpTotalScore -= 5;
-                    this.gpAutoScore -= 5;
+                    this.gpTeleopScore -= 5;
                 }
             }
             this.gpScored.splice(this.gpScored.length-1);
@@ -169,6 +178,25 @@ export const useGameDataStore = defineStore({
         },
         setEndgameCS(state){
             this.endgameCS = state;
+        },
+        setEndgameStartTime(time){
+            this.endgameStartTime = time;
+            console.log(this.endgameStartTime)
+        },
+        setDefence(state){
+            this.defence = state;
+        },
+        setDefenceType(state){
+            this.defenceType = state;
+        },
+        setScoutName(name){
+            this.scoutName = name;
+        },
+        setWin(state){
+            this.win = state;
+        },
+        setComments(text){
+            this.comments = text;
         }
     }
 })
