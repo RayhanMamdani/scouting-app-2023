@@ -11,7 +11,7 @@
   
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" @click="this.$router.push('/scoutMatch')">
+      <a class="navbar-item" @click="this.$router.push('/home')">
         Scout
       </a>
 

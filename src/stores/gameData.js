@@ -27,7 +27,7 @@ export const useGameDataStore = defineStore({
 
         scoutName: '',
         endgameCS: "", // N/A, Docked, Engaged
-        defence: '',
+        defence: 'No Defence',
         defenceType: '',
         CSCycle: false,
         win: false,

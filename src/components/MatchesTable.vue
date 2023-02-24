@@ -309,7 +309,7 @@
             },*/
         },
         async mounted() {
-            this.matches = await this.getMatches();
+            this.matches = (await this.getMatches()).reverse();
             this.currentSortField = 'matchNum';
             this.sortDirection = 'DESC';
             //this.pageNum = 1;

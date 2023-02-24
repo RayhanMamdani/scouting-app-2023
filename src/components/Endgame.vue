@@ -37,23 +37,23 @@
 </div>
 
 
-<div class="field my-5" v-show="(gameData.defence != 0)">
+<div class="field my-5" v-show="(getDefence() != 'No Defence')">
     <label class="label"> Defence Type </label>
     <div class="control">
         <label class="radio mx-5">
-          <input type="radio" name="defenceType" @input="gameData.setDefenceType('Line')">
+          <input type="radio" name="defenceType" id='Line' @input="setDefenceType('Line')">
           Line
         </label>
         <label class="radio mx-5">
-          <input type="radio" name="defenceType" @input="gameData.setDefenceType('Zone/Trap')">
+          <input type="radio" name="defenceType" id='Zone/Trap' @input="setDefenceType('Zone/Trap')">
           Zone/Trap
         </label>
         <label class="radio  mx-5">
-          <input type="radio" name="defenceType" @input="gameData.setDefenceType('Man')">
+          <input type="radio" name="defenceType" id='Man' @input="setDefenceType('Man')">
           Man
         </label>
         <label class="radio  mx-5">
-          <input type="radio" name="defenceType" @input="gameData.setDefenceType('Tbone')">
+          <input type="radio" name="defenceType" id='Tbone' @input="setDefenceType('Tbone')">
           Tbone
         </label>
 
@@ -64,11 +64,11 @@
     <label class="label"> Cycle Over Chargestation </label>
     <div class="control">
         <label class="radio mx-5">
-          <input type="radio" name="member" @input="gameData.setCSCycle(true)">
+          <input type="radio" name="member" @input="setCSCycle(true)">
           Yes
         </label>
         <label class="radio mx-5">
-          <input type="radio" name="member" @input="gameData.setCSCycle(false)">
+          <input type="radio" name="member" @input="setCSCycle(false)">
           No
         </label>
 
@@ -80,11 +80,11 @@
     <label class="label"> Win </label>
     <div class="control">
         <label class="radio mx-5">
-          <input type="radio" name="win" @input="gameData.setWin(true)">
+          <input type="radio" name="win" @input="setWin(true)">
           Yes
         </label>
         <label class="radio mx-5">
-          <input type="radio" name="win" @input="gameData.setWin(false)">
+          <input type="radio" name="win" @input="setWin(false)">
           No
         </label>
 
@@ -109,7 +109,7 @@
 
 <div class="field is-grouped">
   <div class="control">
-    <button @click="matchPush, MatchDataService.create(gameData.matchData), gameData.$reset(), updateTeam, this.$router.push('/')" class="button is-primary">Submit</button>
+    <button @click="matchPush, createMatch(), resetMatchData(), updateTeam, this.$router.push('/')" class="button is-primary">Submit</button>
   </div>
   <div class="control">
     <button class="button is-link is-light">Cancel</button>
@@ -155,6 +155,24 @@ export default {
         tournamentData.matchPush(gameData.matchNum);
       }
     },
+    getDefence() {
+      return gameData.defence;
+    },
+    setDefenceType(type) {
+      gameData.setDefenceType(type);
+    },
+    setCSCycle(state) {
+      gameData.setCSCycle(state);
+    },
+    setWin(state) {
+      gameData.setWin(state);
+    },
+    createMatch() {
+      MatchDataService.create(gameData.matchData);
+    },
+    resetMatchData() {
+      gameData.$reset()
+    },
     async updateTeam() {
       let teamID = '';
       this.teams.forEach(team => {
@@ -169,6 +187,8 @@ export default {
         if (match.teamNum === gameData.teamNum) {
           // add arrays to teamData.js for every team avg attribute and then average them here
           // will need to push new match data to matches database but also respective teams' match attribute arrays
+          // should the team match attribute arrays go local in teamData.js (always reloading all arrays from scratch) or should it go into the database (only pushing one at a time)
+          // then update teams database using teamData.js averages
         }
       })
     }
