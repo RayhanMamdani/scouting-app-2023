@@ -24,7 +24,8 @@ app.get('/', function (req,res) {
     res.sendFile(path + "index.html");
   });
 
-require("./app/routes/routes")(app);
+require("./app/routes/matchRoutes")(app);
+require("./app/routes/teamRoutes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

@@ -1,12 +1,8 @@
 <template>
-<head>
-
-</head>
 <Navbar/>
+<AddTeams/>
 <div class="">
-
-
-<table class="table">
+  <table class="table">
     <thead>
       <tr>
         <th><abbr title="Position">Pos</abbr></th>
@@ -22,12 +18,13 @@
         <th>Qualification or relegation</th>
       </tr>
     </thead>
-    </table>
+  </table>
 </div>
 </template>
 
 <script setup>
 import Navbar from '../components/Navbar.vue';
+import AddTeams from '../components/AddTeams.vue';
 </script>
 
 <style scoped>

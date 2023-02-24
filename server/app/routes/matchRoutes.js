@@ -1,5 +1,5 @@
 module.exports = app => {
-    const Matches = require("../controllers/controller.js");
+    const Matches = require("../controllers/matchController.js");
   
     var router = require("express").Router();
   

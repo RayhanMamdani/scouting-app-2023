@@ -23,6 +23,12 @@ export const useTournamentStore = defineStore({
 
         teamCheck(team){
        return this.teams.includes(parseInt(team));
+        },
+        teamPush(teamNum) {
+            this.teams.push(teamNum);
+        },
+        matchPush(matchNum) {
+            this.matchesPlayed.push(matchNum);
         }
     }
 })

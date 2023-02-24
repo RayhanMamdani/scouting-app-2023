@@ -109,7 +109,7 @@
 
 <div class="field is-grouped">
   <div class="control">
-    <button @click="MatchDataService.create(gameData.matchData), gameData.$reset(), this.$router.push('/')" class="button is-primary">Submit</button>
+    <button @click="matchPush, MatchDataService.create(gameData.matchData), gameData.$reset(), updateTeam, this.$router.push('/')" class="button is-primary">Submit</button>
   </div>
   <div class="control">
     <button class="button is-link is-light">Cancel</button>
@@ -119,27 +119,67 @@
 </template>
 
 
-<script setup>
+<script>
 import { useGameDataStore } from '../stores/gameData'; 
 import MatchDataService from '../services/MatchDataService';
+import { useTournamentStore } from '../stores/tournamentData';
+import TeamDataService from '../services/TeamDataService'
+
+export default {
+  data () {
+    return {
+      teams: [],
+      matches: [],
+      singleTeamMatches: [],
+    }
+  },
+  methods: {
+    getValue() {
+      let x = document.getElementById('defence').value;
+      gameData.setDefence(x);
+    },
+    setEndgameCS() {
+      let x = document.getElementById('endgameCS').value;
+      gameData.setEndgameCS(x);
+    },
+    setScoutName() {
+      let x = document.getElementById('scoutName').value;
+      gameData.setScoutName(x);
+    },
+    setComments() {
+      let x = document.getElementById('comments').value;
+      gameData.setComments(x);
+    },
+    matchPush() {
+      if (!tournamentData.matchCheck(gameData.matchNum)) {
+        tournamentData.matchPush(gameData.matchNum);
+      }
+    },
+    async updateTeam() {
+      let teamID = '';
+      this.teams.forEach(team => {
+        if (team.teamNum === gameData.teamNum) {
+          teamID = team._id;
+        }
+      })
+      //await TeamDataService.update(teamID, teamAvg())
+    },
+    async teamAvg() {
+      this.matches.forEach(match => {
+        if (match.teamNum === gameData.teamNum) {
+          // add arrays to teamData.js for every team avg attribute and then average them here
+          // will need to push new match data to matches database but also respective teams' match attribute arrays
+        }
+      })
+    }
+  },
+  async mounted() {
+    this.teams = await TeamDataService.getTeams();
+    this.matches = await MatchDataService.getMatches();
+  }
+}
 const gameData = useGameDataStore();
-console.log(JSON.parse(JSON.stringify(gameData.matchData)));
-const getValue = () => {
-  let x = document.getElementById('defence').value;
-  gameData.setDefence(x);
-}
-const setEndgameCS= () => {
-  let x = document.getElementById('endgameCS').value;
-  gameData.setEndgameCS(x);
-}
-const setScoutName = () => {
-  let x = document.getElementById('scoutName').value;
-  gameData.setScoutName(x);
-}
-const setComments= () => {
-  let x = document.getElementById('comments').value;
-  gameData.setComments(x);
-}
+const tournamentData = useTournamentStore();
 
 
 </script>
