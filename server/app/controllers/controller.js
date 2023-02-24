@@ -26,6 +26,7 @@ exports.create = (req, res) => {
     autoPickupPos: req.body.autoPickupPos,
     CSCycle: req.body.CSCycle,
     endgameStartTime: req.body.endgameStartTime,
+    estCycleTime: req.body.estCycleTime,
     endgameCS: req.body.endgameCS,
     defence: req.body.defence,
     defenceType: req.body.defenceType,

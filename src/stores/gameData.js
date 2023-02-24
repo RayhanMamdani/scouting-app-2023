@@ -6,7 +6,6 @@ export const useGameDataStore = defineStore({
     id: 'gameData',
 
     state: () => ({
-        scoutName: null,
         matchNum: null,
         teamNum: null,
         gameState: 'auto', // 3 states auto,teleop,endgame for switching components
@@ -24,9 +23,10 @@ export const useGameDataStore = defineStore({
         pickupType: '',
         autoPickupPos: '',
         endgameStartTime: '',
+        estCycleTime: '',
 
         scoutName: '',
-        endgameCS: "N/A", // N/A, Docked, Engaged
+        endgameCS: "", // N/A, Docked, Engaged
         defence: '',
         defenceType: '',
         CSCycle: false,
@@ -72,6 +72,7 @@ export const useGameDataStore = defineStore({
                 autoPickupPos: state.autoPickupPos,
                 CSCycle: state.CSCycle,
                 endgameStartTime: state.endgameStartTime,
+                estCycleTime: state.estCycleTime,
                 endgameCS: state.endgameCS,
                 defence: state.defence,
                 defenceType: state.defenceType,
@@ -181,6 +182,10 @@ export const useGameDataStore = defineStore({
         },
         setEndgameStartTime(time){
             this.endgameStartTime = time;
+            let EGStartTimeInSecs = parseFloat(time.substring(0,1)*60) + parseFloat(time.substring(2,4))
+            let cyclePeriod = EGStartTimeInSecs - 15.0
+            let cycleTime = cyclePeriod / this.gpTeleopTotal
+            this.estCycleTime = cycleTime;
             console.log(this.endgameStartTime)
         },
         setDefence(state){

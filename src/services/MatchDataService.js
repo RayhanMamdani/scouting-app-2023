@@ -1,8 +1,11 @@
 import http from "../http-common";
 
 class MatchDataService {
-  getAll() {
-    return http.get("/matches");
+  async getMatches() {
+    const res = await http.get("/matches");
+    const data = res.data;
+    console.log(data);
+    return data;
   }
 
   get(id) {

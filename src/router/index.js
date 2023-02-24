@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Landing from '../views/Landing.vue'
 import Data from '../views/Data.vue'
+import Matches from '../views/Matches.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -28,6 +29,11 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/ScoutMatch.vue')
     },
+    {
+      path: '/matches',
+      name: 'matches',
+      component: Matches
+    }
    
   ]
 })

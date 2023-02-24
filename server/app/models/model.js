@@ -19,6 +19,7 @@ module.exports = mongoose => {
           autoPickupPos: String,
           CSCycle: Boolean,
           endgameStartTime: String,
+          estCycleTime: Number,
           endgameCS: String,
           defence: String,
           defenceType: String,
