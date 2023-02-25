@@ -23,7 +23,13 @@ class TeamDataService {
   }
 
   update(id, data) {
-    return http.put(`/teams/${id}`, data);
+    return http.put(`/teams/${id}`, data)
+    .then(function(response){
+      console.log(response);
+    })
+    .catch(function(err) {
+      console.log(err)
+    });
   }
 
   delete(id) {

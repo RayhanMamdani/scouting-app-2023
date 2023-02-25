@@ -17,7 +17,7 @@ module.exports = mongoose => {
             modePickupType: String,
             modeAutoPickupPos: String,
             avgEndgameStartTime: String,
-            avgEstCycleTime: String,
+            avgEstCycleTime: Number,
             modeEndgameCS: String,
             modeDefence: String,
             modeDefenceType: String,

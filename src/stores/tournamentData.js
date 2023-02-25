@@ -7,7 +7,7 @@ export const useTournamentStore = defineStore({
 
     state: () => ({
         
-       teams: [7558,1241,1114],
+       teams: [7558,1241,1114,1234],
        matchesPlayed: [1,3,4,2]
 
 

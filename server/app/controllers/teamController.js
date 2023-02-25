@@ -99,6 +99,7 @@ exports.update = (req, res) => {
           } else res.send({ message: "Team was updated successfully." });
         })
         .catch(err => {
+          console.log(req.body);
           res.status(500).send({
             message: "Error updating Team with id=" + id
           });

@@ -109,7 +109,7 @@
 
 <div class="field is-grouped">
   <div class="control">
-    <button @click="matchPush, createMatch(), resetMatchData(), updateTeam, this.$router.push('/')" class="button is-primary">Submit</button>
+    <button @click="matchPush(), createMatch(), updateTeam(), resetMatchData(), this.$router.push('/')" class="button is-primary">Submit</button>
   </div>
   <div class="control">
     <button class="button is-link is-light">Cancel</button>
@@ -124,6 +124,7 @@ import { useGameDataStore } from '../stores/gameData';
 import MatchDataService from '../services/MatchDataService';
 import { useTournamentStore } from '../stores/tournamentData';
 import TeamDataService from '../services/TeamDataService'
+import { useTeamDataStore } from '../stores/teamData'
 
 export default {
   data () {
@@ -173,24 +174,120 @@ export default {
     resetMatchData() {
       gameData.$reset()
     },
-    async updateTeam() {
+    updateTeam() {
       let teamID = '';
       this.teams.forEach(team => {
-        if (team.teamNum === gameData.teamNum) {
+        if (team.teamNum == gameData.teamNum) {
           teamID = team._id;
         }
       })
-      //await TeamDataService.update(teamID, teamAvg())
+      console.log(teamID)
+      TeamDataService.update(teamID, this.teamAvg())
     },
-    async teamAvg() {
+    teamAvg() {
       this.matches.forEach(match => {
-        if (match.teamNum === gameData.teamNum) {
+        if (match.teamNum == gameData.teamNum) {
           // add arrays to teamData.js for every team avg attribute and then average them here
           // will need to push new match data to matches database but also respective teams' match attribute arrays
           // should the team match attribute arrays go local in teamData.js (always reloading all arrays from scratch) or should it go into the database (only pushing one at a time)
           // then update teams database using teamData.js averages
+          teamData.communityPush(match.community);
+          teamData.autoCSPush(match.autoCS);
+          teamData.gpTotalPush(match.gpTotal);
+          teamData.gpAutoTotalPush(match.gpAutoTotal);
+          teamData.gpTeleopTotalPush(match.gpTeleopTotal);
+          teamData.gpAutoScorePush(match.gpAutoScore);
+          teamData.gpTeleopScorePush(match.gpTeleopScore);
+          teamData.gpTotalScorePush(match.gpTotalScore);
+          teamData.autoStartPosPush(match.autoStartPos);
+          teamData.pickupTypePush(match.pickupType);
+          teamData.autoPickupPosPush(match.autoPickupPos);
+          teamData.endgameStartTimePush(match.endgameStartTime);
+          teamData.estCycleTimePush(match.estCycleTime);
+          teamData.endgameCSPush(match.endgameCS);
+          teamData.defencePush(match.defence);
+          teamData.defenceTypePush(match.defenceType);
+          teamData.CSCyclePush(match.CSCycle);
+          teamData.winPush(match.win);
         }
       })
+      console.log(this.findAvgTime(teamData.endgameStartTimeArray));
+      let team = {
+        teamNum: gameData.teamNum,
+        modeCommunity: this.findMode(teamData.communityArray),
+        modeAutoCS: this.findHighestCS(teamData.autoCSArray),
+        avgGpTotal: this.findAvg(teamData.gpTotalArray),
+        avgGpAutoTotal: this.findAvg(teamData.gpAutoTotalArray),
+        avgGpTeleopTotal: this.findAvg(teamData.gpTeleopTotalArray),
+        avgGpAutoScore: this.findAvg(teamData.gpAutoScoreArray),
+        avgGpTeleopScore: this.findAvg(teamData.gpTeleopScoreArray),
+        avgGpTotalScore: this.findAvg(teamData.gpTotalScoreArray),
+        modeAutoStartPos: this.findMode(teamData.autoStartPosArray),
+        modePickupType: this.findMode(teamData.pickupTypeArray),
+        modeAutoPickupPos: this.findMode(teamData.autoPickupPosArray),
+        avgEndgameStartTime: this.findAvgTime(teamData.endgameStartTimeArray),
+        avgEstCycleTime: this.findAvg(teamData.estCycleTimeArray),
+        modeEndgameCS: this.findHighestCS(teamData.endgameCSArray),
+        modeDefence: this.findMode(teamData.defenceArray),
+        modeDefenceType: this.findMode(teamData.defenceTypeArray),
+        modeCSCycle: this.findMode(teamData.CSCycleArray),
+        modeWin: this.findMode(teamData.winArray)
+      }
+      return team;
+    },
+    findMode(array) {
+      let validData = array.filter(data => data != '');
+      var mode = '';
+      var frequency = {};  // array of frequency.
+      var maxFreq = 0;  // holds the max frequency.
+
+      for (var i in validData) {
+          frequency[validData[i]] = (frequency[validData[i]] || 0) + 1; // increment frequency.
+
+          if (frequency[validData[i]] > maxFreq) { // is this frequency > max so far ?
+              maxFreq = frequency[validData[i]];  // update max.
+              mode = validData[i];          // update result.
+          }
+      }
+      return mode;
+    },
+    findAvg(array) {
+      let validData = array.filter(data => data != null);
+      let total = 0;
+      validData.forEach(number => {
+        total += number;
+      })
+      let avg = (total/validData.length).toFixed(0);
+      if (avg == NaN) {
+        return 0;
+      } else {
+        return avg;
+      }
+    },
+    findHighestCS(array) {
+      if (array.indexOf('Engaged') >= 0) {
+        return 'Engaged';
+      } else if (array.indexOf('Docked') >= 0) {
+        return 'Docked';
+      } else if (array.indexOf('Parked') >= 0) {
+        return 'Parked';
+      } else {
+        return 'None';
+      }
+    },
+    findAvgTime(array) {
+      console.log(array)
+      let totalSecs = 0;
+      let validTimes = 0;
+      array.forEach(time => {
+        if (time != '') {
+          let EGStartTimeInSecs = parseFloat(time.substring(0,1)*60) + parseFloat(time.substring(2,4));
+          totalSecs += EGStartTimeInSecs;
+          validTimes++;
+        }
+      })
+      let avgTimeInSecs = Math.round(totalSecs / validTimes);
+      return(avgTimeInSecs-(avgTimeInSecs%=60))/60+(9<avgTimeInSecs?':':':0')+avgTimeInSecs;
     }
   },
   async mounted() {
@@ -200,6 +297,7 @@ export default {
 }
 const gameData = useGameDataStore();
 const tournamentData = useTournamentStore();
+const teamData = useTeamDataStore();
 
 
 </script>

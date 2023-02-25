@@ -20,7 +20,7 @@
                                 <th @click="sort('autoPickupPos')"><a>Auto Pickup Pos</a></th>
                                 <th @click="sort('autoCS')"><a>Auto CS</a></th>
                                 <th @click="sort('gpAutoTotal')"><a>Auto GP Total</a></th>
-                                <th @click="sort('gpAutoScore')"><a>Auto GP Total</a></th>
+                                <th @click="sort('gpAutoScore')"><a>Auto GP Score</a></th>
                                 <th @click="sort('gpTeleopTotal')"><a>Teleop GP Total</a></th>
                                 <th @click="sort('gpTeleopScore')"><a>Teleop GP Score</a></th>
                                 <th @click="sort('gpTotal')"><a>Combined GP Total</a></th>

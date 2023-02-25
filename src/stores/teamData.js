@@ -20,13 +20,34 @@ export const useTeamDataStore = defineStore({
         modePickupType: '',
         modeAutoPickupPos: '',
         avgEndgameStartTime: '',
-        avgEstCycleTime: '',
+        avgEstCycleTime: null,
 
         modeEndgameCS: "", // N/A, Docked, Engaged
         modeDefence: '',
         modeDefenceType: '',
         modeCSCycle: false,
         modeWin: false,
+
+        communityArray: [],
+        autoCSArray: [],
+        gpTotalArray: [],
+        gpAutoTotalArray: [],
+        gpTeleopTotalArray: [],
+        gpAutoScoreArray: [],
+        gpTeleopScoreArray: [],
+        gpTotalScoreArray: [],
+
+        autoStartPosArray: [],
+        pickupTypeArray: [],
+        autoPickupPosArray: [],
+        endgameStartTimeArray: [],
+        estCycleTimeArray: [],
+
+        endgameCSArray: [],
+        defenceArray: [],
+        defenceTypeArray: [],
+        CSCycleArray: [],
+        winArray: [],
     }),
     getters: {
         teamData(state) {
@@ -57,6 +78,60 @@ export const useTeamDataStore = defineStore({
     actions: {
         setTeamNum(num) {
             this.teamNum = num;
-        }
+        },
+        communityPush(state) {
+            this.communityArray.push(state);
+        },
+        autoCSPush(state) {
+            this.autoCSArray.push(state);
+        },
+        gpTotalPush(num) {
+            this.gpTotalArray.push(num);
+        },
+        gpAutoTotalPush(num) {
+            this.gpAutoTotalArray.push(num);
+        },
+        gpTeleopTotalPush(num) {
+            this.gpTeleopTotalArray.push(num);
+        },
+        gpAutoScorePush(num) {
+            this.gpAutoScoreArray.push(num);
+        },
+        gpTeleopScorePush(num) {
+            this.gpTeleopScoreArray.push(num);
+        },
+        gpTotalScorePush(num) {
+            this.gpTotalScoreArray.push(num);
+        },
+        autoStartPosPush(pos) {
+            this.autoStartPosArray.push(pos);
+        },
+        pickupTypePush(type) {
+            this.pickupTypeArray.push(type);
+        },
+        autoPickupPosPush(pos) {
+            this.autoPickupPosArray.push(pos);
+        },
+        endgameStartTimePush(time) {
+            this.endgameStartTimeArray.push(time);
+        },
+        estCycleTimePush(time) {
+            this.estCycleTimeArray.push(time);
+        },
+        endgameCSPush(state) {
+            this.endgameCSArray.push(state);
+        },
+        defencePush(state) {
+            this.defenceArray.push(state);
+        },
+        defenceTypePush(type) {
+            this.defenceTypeArray.push(type);
+        },
+        CSCyclePush(state) {
+            this.CSCycleArray.push(state);
+        },
+        winPush(state) {
+            this.winArray.push(state);
+        },
     }
 })
