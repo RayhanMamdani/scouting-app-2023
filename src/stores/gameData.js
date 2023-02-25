@@ -186,6 +186,7 @@ export const useGameDataStore = defineStore({
             let cyclePeriod = EGStartTimeInSecs - 15.0
             let cycleTime = cyclePeriod / this.gpTeleopTotal
             this.estCycleTime = parseFloat(cycleTime.toFixed(2));
+            console.log(this.estCycleTime)
         },
         setDefence(state){
             this.defence = state;

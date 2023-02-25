@@ -18,13 +18,17 @@ const tournamentData = useTournamentStore();
 const addTeam = () => {
     let teamNum = document.querySelector('#teamNum').value;
     console.log(teamNum);
-    if (!tournamentData.teamCheck(teamNum)) {
+    teamData.setTeamNum(teamNum);
+    tournamentData.teamPush(teamNum);
+    TeamDataService.create(teamData.teamData);
+    teamData.$reset;
+    /*if (!tournamentData.teamCheck(teamNum)) {
         teamData.setTeamNum(teamNum);
         tournamentData.teamPush(teamNum);
         TeamDataService.create(teamData.teamData);
         teamData.$reset;
     } else {
         alert('Please add a new team');
-    }
+    }*/
 }
 </script>

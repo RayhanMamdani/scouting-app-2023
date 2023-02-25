@@ -109,6 +109,7 @@ const gameData = useGameDataStore();
 
 function setEndgameStartTime() {
     const time = document.getElementById('input2').value;
+    console.log(time)
     gameData.setEndgameStartTime(time);
 }
 

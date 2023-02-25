@@ -55,6 +55,7 @@
 
 <script>
     import MatchDataService from '../services/MatchDataService.js'
+    //import { defineCustomElement } from 'vue';
 
     export default {
         data() {
@@ -159,6 +160,13 @@
                 newRow.appendChild(newCell);
                 newCell = document.createElement('td');
                 newCell.appendChild(document.createTextNode(match.comments));
+                newRow.appendChild(newCell);
+                newCell = document.createElement('td');
+                let button = document.createElement('button');
+                button.setAttribute('class', 'button is-danger');
+                button.appendChild(document.createTextNode('Delete'));
+                button.addEventListener('click', console.log('test')); //'this.deleteMatch(match._id)'
+                newCell.appendChild(button);
                 newRow.appendChild(newCell);
                 
                 return newRow;
@@ -284,6 +292,10 @@
                 }
                 this.createMatches();
             },
+            deleteMatch(id){
+                console.log('test')
+                MatchDataService.delete(id);
+            },
             /*initPagination(matches) {
                 let pages = Math.ceil(matches.length/this.pageMatches);
                 for (let i=1; i<pages+1; i++) {
@@ -317,6 +329,14 @@
             this.createMatches();
         }
     }
+    /*const DeleteButton = defineCustomElement({
+        props: {
+            class: String,
+            id: String
+        },
+        template: '<button @click=deleteMatch('+this.id+')>Delete</button>',
+    })
+    customElements.define('deleteButton', DeleteButton)*/
 </script>
 
 <style scoped>

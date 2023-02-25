@@ -109,7 +109,7 @@
 
 <div class="field is-grouped">
   <div class="control">
-    <button @click="matchPush(), createMatch(), updateTeam(), resetMatchData(), this.$router.push('/')" class="button is-primary">Submit</button>
+    <button @click="matchPush(), createMatch(), this.$router.push('/')" class="button is-primary">Submit</button>
   </div>
   <div class="control">
     <button class="button is-link is-light">Cancel</button>
@@ -168,8 +168,13 @@ export default {
     setWin(state) {
       gameData.setWin(state);
     },
-    createMatch() {
+    async createMatch() {
       MatchDataService.create(gameData.matchData);
+      console.log(MatchDataService.getMatches())
+      this.matches = await MatchDataService.getMatches(); // for some reason, this is taking a while and everything else is going ahead while this is still loading, so creating a match for a new team breaks it
+      this.updateTeam();
+      this.resetMatchData();
+      teamData.$reset();
     },
     resetMatchData() {
       gameData.$reset()
@@ -185,6 +190,7 @@ export default {
       TeamDataService.update(teamID, this.teamAvg())
     },
     teamAvg() {
+      console.log(this.matches)
       this.matches.forEach(match => {
         if (match.teamNum == gameData.teamNum) {
           // add arrays to teamData.js for every team avg attribute and then average them here
@@ -211,7 +217,7 @@ export default {
           teamData.winPush(match.win);
         }
       })
-      console.log(this.findAvgTime(teamData.endgameStartTimeArray));
+      console.log(teamData.estCycleTimeArray);
       let team = {
         teamNum: gameData.teamNum,
         modeCommunity: this.findMode(teamData.communityArray),
@@ -236,7 +242,9 @@ export default {
       return team;
     },
     findMode(array) {
-      let validData = array.filter(data => data != '');
+      console.log(array)
+      let validData = array.filter(data => data != '' || data == false);
+      console.log(validData)
       var mode = '';
       var frequency = {};  // array of frequency.
       var maxFreq = 0;  // holds the max frequency.
@@ -257,8 +265,8 @@ export default {
       validData.forEach(number => {
         total += number;
       })
-      let avg = (total/validData.length).toFixed(0);
-      if (avg == NaN) {
+      let avg = parseFloat((total/validData.length).toFixed(0));
+      if (avg == 'NaN') {
         return 0;
       } else {
         return avg;
