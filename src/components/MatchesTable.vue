@@ -23,15 +23,15 @@
                                 <th @click="sort('gpAutoScore')"><a>Auto GP Score</a></th>
                                 <th @click="sort('gpTeleopTotal')"><a>Teleop GP Total</a></th>
                                 <th @click="sort('gpTeleopScore')"><a>Teleop GP Score</a></th>
-                                <th @click="sort('gpTotal')"><a>Combined GP Total</a></th>
-                                <th @click="sort('gpTotalScore')"><a>Combined GP Score</a></th>
+                                <th class='is-warning' @click="sort('gpTotal')"><a>Combined GP Total</a></th>
+                                <th class='is-warning' @click="sort('gpTotalScore')"><a>Combined GP Score</a></th>
                                 <th @click="sort('community')"><a>Community</a></th>
-                                <th @click="sort('pickupType')"><a>Pickup Type</a></th>
+                                <th class='is-warning' @click="sort('pickupType')"><a>Pickup Type</a></th>
                                 <th @click="sort('endgameStartTime')"><a>EG Start Time</a></th>
-                                <th @click="sort('estCycleTime')"><a>Est. Cycle Time (s)</a></th>
+                                <th class='is-warning' @click="sort('estCycleTime')"><a>Est. Cycle Time (s)</a></th>
                                 <th @click="sort('scoutName')"><a>Scout Name</a></th>
-                                <th @click="sort('endgameCS')"><a>EG CS</a></th>
-                                <th @click="sort('defence')"><a>Defence</a></th>
+                                <th class='is-warning' @click="sort('endgameCS')"><a>EG CS</a></th>
+                                <th class='is-warning' @click="sort('defence')"><a>Defence</a></th>
                                 <th @click="sort('defenceType')"><a>Defence Type</a></th>
                                 <th @click="sort('CSCycle')"><a>Cycle Over Charge Station</a></th>
                                 <th @click="sort('win')"><a>Win</a></th>
@@ -43,13 +43,13 @@
                 </div>
             </div>
         </div>
-        <nav class="pagination" role="navigation" aria-label="pagination">
+        <!--<nav class="pagination" role="navigation" aria-label="pagination">
             <a class="pagination-previous">Previous</a>
             <a class="pagination-next">Next page</a>
             <ul class="pagination-list" id="pagination">
                 
             </ul>
-        </nav>
+        </nav>-->
     </div>
 </template>
 
