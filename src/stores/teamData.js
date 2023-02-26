@@ -8,7 +8,7 @@ export const useTeamDataStore = defineStore({
     state: () => ({
         teamNum: null,
         modeCommunity: false,
-        modeAutoCS: "", //Docked, Engaged, Parked
+        modeAutoCS: "", //Docked, Engaged, Parked | actually should be highest auto CS but i dont want to change everything
         avgGpTotal: 0,//total number of gamepieces scored (total indexes of gamepiece array)
         avgGpAutoTotal: 0,
         avgGpTeleopTotal: 0,
@@ -22,7 +22,7 @@ export const useTeamDataStore = defineStore({
         avgEndgameStartTime: '',
         avgEstCycleTime: null,
 
-        modeEndgameCS: "", // N/A, Docked, Engaged
+        modeEndgameCS: "", // N/A, Docked, Engaged | actually should be highest endgame CS but i dont want to change everything
         modeDefence: '',
         modeDefenceType: '',
         modeCSCycle: false,
