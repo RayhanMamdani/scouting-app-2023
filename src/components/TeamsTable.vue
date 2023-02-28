@@ -23,7 +23,7 @@
                                 <th @click="sort('avgGpTeleopScore')"><a>Avg Teleop GP Score</a></th>
                                 <th class='is-warning' @click="sort('avgGpTotal')"><a>Avg Combined GP Total</a></th>
                                 <th class='is-warning' @click="sort('avgGpTotalScore')"><a>Avg Combined GP Score</a></th>
-                                <th @click="sort('modeCommunity')"><a>Mode Community</a></th>
+                                <th @click="sort('modeCommunity')"><a>Mode Coopertition</a></th>
                                 <th class='is-warning' @click="sort('modePickupType')"><a>Mode Pickup Type</a></th>
                                 <th @click="sort('avgEndgameStartTime')"><a>Avg EG Start Time</a></th>
                                 <th class='is-warning' @click="sort('avgEstCycleTime')"><a>Avg Est. Cycle Time (s)</a></th>

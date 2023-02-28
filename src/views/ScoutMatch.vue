@@ -36,7 +36,7 @@
                         @click="gameData.setPickupType('Sub 1')">Sub 1</button>
                 <button :class="[gameData.pickupType === 'Sub 2' ? 'button is-medium tile is-danger has-text-centered my-1' : 'button is-medium tile is-dark has-text-centered my-1']" 
                         @click="gameData.setPickupType('Sub 2')">Sub 2</button>
-                <label class="label is-size-6 my-2 has-text-centered">Endgame Start Time</label>
+                <label class="label is-size-6 my-2 has-text-centered">EG Start Time (s left)</label>
                 <div class="control"> 
                     <input class="input" type="text" placeholder="0:00" id="input2" @input="setEndgameStartTime()">
                 </div>

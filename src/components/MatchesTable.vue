@@ -25,7 +25,7 @@
                                 <th @click="sort('gpTeleopScore')"><a>Teleop GP Score</a></th>
                                 <th class='is-warning' @click="sort('gpTotal')"><a>Combined GP Total</a></th>
                                 <th class='is-warning' @click="sort('gpTotalScore')"><a>Combined GP Score</a></th>
-                                <th @click="sort('community')"><a>Community</a></th>
+                                <th @click="sort('community')"><a>Coopertition</a></th>
                                 <th class='is-warning' @click="sort('pickupType')"><a>Pickup Type</a></th>
                                 <th @click="sort('endgameStartTime')"><a>EG Start Time</a></th>
                                 <th class='is-warning' @click="sort('estCycleTime')"><a>Est. Cycle Time (s)</a></th>
@@ -92,7 +92,7 @@
                     //this.initPagination(this.matches);
                 }
             },
-            createRow(match) {
+            createRow(match) { // to make this have @click function, might need to make createRow a Vue component and just put currentMatch in gameData.js or something
                 let newRow = document.createElement('tr');
                 newRow.setAttribute('scope', 'row');
                 let newCell = document.createElement('td');

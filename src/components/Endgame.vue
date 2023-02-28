@@ -92,16 +92,9 @@
 </div>
 
 <div class="field">
-    <label class="label"> RP Gained</label>
-    <input class="input" type="number" placeholder="RP">
-</div>
-
-
-
-<div class="field">
   <label class="label">Comments</label>
   <div class="control">
-    <textarea class="textarea" placeholder="Special comments on this robot" id="comments" @change="setComments"></textarea>
+    <textarea class="textarea" placeholder="1. Driver Skill&#10;2. Penalties&#10;3. Any special comments on the robot or things not included yet" id="comments" @change="setComments"></textarea>
   </div>
 </div>
 
