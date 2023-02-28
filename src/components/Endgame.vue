@@ -210,7 +210,7 @@ export default {
           teamData.winPush(match.win);
         }
       })
-      console.log(teamData.estCycleTimeArray);
+      console.log(teamData.autoStartPosArray);
       let team = {
         teamNum: gameData.teamNum,
         modeCommunity: this.findMode(teamData.communityArray),
@@ -236,7 +236,7 @@ export default {
     },
     findMode(array) {
       console.log(array)
-      let validData = array.filter(data => data != '' || data == false);
+      let validData = array.filter(data => data !== '');
       console.log(validData)
       var mode = '';
       var frequency = {};  // array of frequency.
