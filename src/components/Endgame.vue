@@ -224,7 +224,7 @@ export default {
         modeAutoStartPos: this.findMode(teamData.autoStartPosArray),
         modePickupType: this.findMode(teamData.pickupTypeArray),
         modeAutoPickupPos: this.findMode(teamData.autoPickupPosArray),
-        avgEndgameStartTime: this.findAvgTime(teamData.endgameStartTimeArray),
+        avgEndgameStartTime: this.findAvg(teamData.endgameStartTimeArray),
         avgEstCycleTime: this.findAvg(teamData.estCycleTimeArray),
         modeEndgameCS: this.findHighestCS(teamData.endgameCSArray),
         modeDefence: this.findMode(teamData.defenceArray),

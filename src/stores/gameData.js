@@ -22,7 +22,7 @@ export const useGameDataStore = defineStore({
         autoStartPos: '',
         pickupType: '',
         autoPickupPos: '',
-        endgameStartTime: '',
+        endgameStartTime: null,
         estCycleTime: null,
 
         scoutName: '',
@@ -182,10 +182,11 @@ export const useGameDataStore = defineStore({
         },
         setEndgameStartTime(time){
             this.endgameStartTime = time;
-            let EGStartTimeInSecs = parseFloat(time.substring(0,1)*60) + parseFloat(time.substring(2,4))
+            //let EGStartTimeInSecs = parseFloat(time.substring(0,1)*60) + parseFloat(time.substring(2,4)) String version
+            let EGStartTimeInSecs = time; // number version
             let cyclePeriod = 135 - EGStartTimeInSecs
             let cycleTime = cyclePeriod / this.gpTeleopTotal
-            this.estCycleTime = parseFloat(cycleTime.toFixed(2));
+            this.estCycleTime = parseFloat(cycleTime.toFixed(2))
             console.log(this.estCycleTime)
         },
         setDefence(state){
