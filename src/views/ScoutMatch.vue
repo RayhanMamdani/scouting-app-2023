@@ -2,7 +2,7 @@
 
 <template>
     <div>
-        <Navbar/>
+        
     </div>
 
     <div class="columns is-flex is-justify-content-center" style=" margin-top: 5%; margin-bottom: 5%">
@@ -72,8 +72,8 @@
                     <p class="title is-size-10 mb-2">{{ gameData.gpTotalScore }}</p>
                 </div>
                 <Chargestation v-show="gameData.gameState == 'auto'"/>
-                <Community v-show="gameData.gameState == 'teleop'"/>
-                <!-- <CycleOverChargeStation v-show="gameData.gameState === 'teleop'"/> -->
+            
+          
 
             </div>
         </div>
@@ -102,7 +102,7 @@ import Community from '../components/Community.vue'
 import Endgame from '../components/Endgame.vue'
 import AutoStartPos from '../components/AutoStartPos.vue'
 import AutoPickupPos from '../components/AutoPickupPos.vue'
-import CycleOverChargeStation from '../components/CycleOverChargeStation.vue'
+
 import { useGameDataStore } from '../stores/gameData'
 
 const gameData = useGameDataStore();

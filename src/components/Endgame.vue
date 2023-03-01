@@ -59,6 +59,20 @@
 
       </div>
 </div>
+<div class="field my-5">
+    <label class="label"> Coopertition Bonus </label>
+    <div class="control">
+        <label class="radio mx-5">
+          <input type="radio" name="member" @input="setCSCycle(true)">
+          Yes
+        </label>
+        <label class="radio mx-5">
+          <input type="radio" name="member" @input="setCSCycle(false)">
+          No
+        </label>
+
+      </div>
+</div>
 
 <div class="field my-5">
     <label class="label"> Cycle Over Chargestation </label>
@@ -100,12 +114,12 @@
 
 
 
-<div class="field is-grouped">
-  <div class="control">
-    <button @click="matchPush(), createMatch(), this.$router.push('/')" class="button is-primary">Submit</button>
+<div class="field is-grouped columns">
+  <div class="control column">
+    <button @click="matchPush(), createMatch() " class="button is-primary">Submit</button>
   </div>
-  <div class="control">
-    <button class="button is-link is-light">Cancel</button>
+  <div class="control column">
+    <button @click ="cancel()" class="button is-link is-danger is-pulled-right">Abort Match</button>
   </div>
 </div>
 </div>
@@ -128,6 +142,13 @@ export default {
     }
   },
   methods: {
+
+    cancel(){
+      if(confirm("Are you sure you want to abort? All data will be lost!") ){
+        this.resetMatchData();
+        this.$router.push('/');
+      }
+    },
     getValue() {
       let x = document.getElementById('defence').value;
       gameData.setDefence(x);
@@ -145,6 +166,7 @@ export default {
       gameData.setComments(x);
     },
     matchPush() {
+
       if (!tournamentData.matchCheck(gameData.matchNum)) {
         tournamentData.matchPush(gameData.matchNum);
       }
@@ -162,12 +184,15 @@ export default {
       gameData.setWin(state);
     },
     async createMatch() {
+      if(confirm("Are you sure you want to submit?") ){
       MatchDataService.create(gameData.matchData);
       console.log(MatchDataService.getMatches())
       this.matches = await MatchDataService.getMatches(); // for some reason, this is taking a while and everything else is going ahead while this is still loading, so creating a match for a new team breaks it
       this.updateTeam();
       this.resetMatchData();
-      teamData.$reset();
+      this.$router.push('/')
+      }
+      
     },
     resetMatchData() {
       gameData.$reset()
