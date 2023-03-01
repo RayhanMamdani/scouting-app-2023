@@ -12,10 +12,7 @@ import TeamsTable from '../components/TeamsTable.vue';
 </script>
 
 <style scoped>
-div {
-  margin: auto;
 
-}
 
 /* .card {
   width: 50%;

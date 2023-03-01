@@ -1,9 +1,12 @@
 <template>
-    <div class="container">
-        <input type="number" class="input" placeholder="Team Number" id="teamNum">
-        <button @click="addTeam" class="button is-danger is-large is-responsive mt-5">Add Team</button>
+    <div class="columns">
+        <div class="column is-7">
+            <input type="number" class="input" typlaceholder="Team Number" id="teamNum">
+        </div>
+        <div class="column">
+            <button @click="addTeam" class="button is-normal is-responsive">Add Team</button>
+        </div>
     </div>
-
 </template>
 
 <script setup>
@@ -32,3 +35,18 @@ const addTeam = () => {
     }*/
 }
 </script>
+
+<style scoped>
+.columns{
+    margin: auto;
+    padding-left: 22.5%;
+}
+input{
+    margin-left: 5%;
+}
+button {
+    border: none;
+    background: linear-gradient(135deg,  #AE0009, #e24138);
+    color: white;
+}
+</style>

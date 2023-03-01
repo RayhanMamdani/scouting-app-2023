@@ -102,7 +102,6 @@ export default {
 #text-div {
   padding: 150px 0;
   width: 60%;
-  
 }
 
 .card {
@@ -115,12 +114,11 @@ export default {
 .card :hover{
   opacity: 0.5;
   cursor: default;
-  
-
 }
 
-
-
+#page{
+  background: linear-gradient(135deg, #AE0009, #e24138)
+}
 
 
 

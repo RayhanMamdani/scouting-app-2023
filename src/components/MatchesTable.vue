@@ -2,7 +2,7 @@
     <div class="container">
         <div class="box my-4">
             <div class="has-text-centered">
-                <h1 class="title mb-2">Matches</h1>
+                <h1 class="title mb-5" style="color:red;">Matches</h1>
             </div>
             <div class="columns">
                 <input type="text" class="input column is-one-quarter mr-5" name="teamFilter" id="teamFilter" placeholder="Filter by team number" @input="filterMatches();">
@@ -23,15 +23,15 @@
                                 <th @click="sort('gpAutoScore')"><a>Auto GP Score</a></th>
                                 <th @click="sort('gpTeleopTotal')"><a>Teleop GP Total</a></th>
                                 <th @click="sort('gpTeleopScore')"><a>Teleop GP Score</a></th>
-                                <th class='is-warning' @click="sort('gpTotal')"><a>Combined GP Total</a></th>
-                                <th class='is-warning' @click="sort('gpTotalScore')"><a>Combined GP Score</a></th>
+                                <th @click="sort('gpTotal')"><a>Combined GP Total</a></th>
+                                <th @click="sort('gpTotalScore')"><a>Combined GP Score</a></th>
                                 <th @click="sort('community')"><a>Community</a></th>
-                                <th class='is-warning' @click="sort('pickupType')"><a>Pickup Type</a></th>
+                                <th @click="sort('pickupType')"><a>Pickup Type</a></th>
                                 <th @click="sort('endgameStartTime')"><a>EG Start Time</a></th>
-                                <th class='is-warning' @click="sort('estCycleTime')"><a>Est. Cycle Time (s)</a></th>
+                                <th @click="sort('estCycleTime')"><a>Est. Cycle Time (s)</a></th>
                                 <th @click="sort('scoutName')"><a>Scout Name</a></th>
-                                <th class='is-warning' @click="sort('endgameCS')"><a>EG CS</a></th>
-                                <th class='is-warning' @click="sort('defence')"><a>Defence</a></th>
+                                <th @click="sort('endgameCS')"><a>EG CS</a></th>
+                                <th @click="sort('defence')"><a>Defence</a></th>
                                 <th @click="sort('defenceType')"><a>Defence Type</a></th>
                                 <th @click="sort('CSCycle')"><a>Cycle Over Charge Station</a></th>
                                 <th @click="sort('win')"><a>Win</a></th>
@@ -342,6 +342,15 @@
 <style scoped>
 div {
   margin: auto;
-
 }
+a{
+    color: black;
+}
+a:hover{
+    color: red;
+}
+.columns{
+    margin-left: 0.065%;
+}
+
 </style>

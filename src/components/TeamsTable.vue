@@ -1,37 +1,37 @@
 <template>
     <div class="container">
-        <div class="box my-4">
+        <div class="box my-4 is-dark">
             <div class="has-text-centered">
-                <h1 class="title mb-2">Teams</h1>
+                <h1 class="title mb-2" style="color: red;">Teams</h1>
             </div>
             <div class="columns">
-                <input type="text" class="input column is-one-quarter mr-5" name="teamFilter" id="teamFilter" placeholder="Filter by team number" @input="filterTeams();">
+                <input type="text" class="input column is-one-quarter" name="teamFilter" id="teamFilter" placeholder="Filter by team number" @input="filterTeams();">
             </div>
-            <div class="">
+            <div>
                 <div class="table-container">
                     <label class="label">Columns are sortable!</label>
-                    <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+                    <table class="table is-bordered is-sthiped is-hoverable is-fullwidth">
                         <thead>
-                            <tr>
-                                <th @click="sort('teamNum')"><a>Team #</a></th>
-                                <th @click="sort('modeAutoStartPos')"><a>Mode Auto Start Pos</a></th>
-                                <th @click="sort('modeAutoPickupPos')"><a>Mode Auto Pickup Pos</a></th>
-                                <th @click="sort('modeAutoCS')"><a>Highest Auto CS</a></th>
-                                <th @click="sort('avgGpAutoTotal')"><a>Avg Auto GP Total</a></th>
-                                <th @click="sort('avgGpAutoScore')"><a>Avg Auto GP Score</a></th>
-                                <th @click="sort('avgGpTeleopTotal')"><a>Avg Teleop GP Total</a></th>
-                                <th @click="sort('avgGpTeleopScore')"><a>Avg Teleop GP Score</a></th>
-                                <th class='is-warning' @click="sort('avgGpTotal')"><a>Avg Combined GP Total</a></th>
-                                <th class='is-warning' @click="sort('avgGpTotalScore')"><a>Avg Combined GP Score</a></th>
-                                <th @click="sort('modeCommunity')"><a>Mode Community</a></th>
-                                <th class='is-warning' @click="sort('modePickupType')"><a>Mode Pickup Type</a></th>
-                                <th @click="sort('avgEndgameStartTime')"><a>Avg EG Start Time</a></th>
-                                <th class='is-warning' @click="sort('avgEstCycleTime')"><a>Avg Est. Cycle Time (s)</a></th>
-                                <th class='is-warning' @click="sort('modeEndgameCS')"><a>Highest EG CS</a></th>
-                                <th class='is-warning' @click="sort('modeDefence')"><a>Mode Defence</a></th>
-                                <th @click="sort('modeDefenceType')"><a>Mode Defence Type</a></th>
-                                <th @click="sort('modeCSCycle')"><a>Mode Cycle Over Charge Station</a></th>
-                                <th @click="sort('modeWin')"><a>Mode Win</a></th>
+                        <tr>
+                            <th @click="sort('teamNum')"><a>Team #</a></th>
+                            <th @click="sort('modeAutoStartPos')"><a>Mode Auto Start Pos</a></th>
+                            <th @click="sort('modeAutoPickupPos')"><a>Mode Auto Pickup Pos</a></th>
+                            <th @click="sort('modeAutoCS')"><a>Highest Auto CS</a></th>
+                            <th @click="sort('avgGpAutoTotal')"><a>Avg Auto GP Total</a></th>
+                            <th @click="sort('avgGpAutoScore')"><a>Avg Auto GP Score</a></th>
+                            <th @click="sort('avgGpTeleopTotal')"><a>Avg Teleop GP Total</a></th>
+                            <th @click="sort('avgGpTeleopScore')"><a>Avg Teleop GP Score</a></th>
+                            <th @click="sort('avgGpTotal')"><a>Avg Combined GP Total</a></th>
+                            <th @click="sort('avgGpTotalScore')"><a>Avg Combined GP Score</a></th>
+                            <th @click="sort('modeCommunity')"><a>Mode Community</a></th>
+                            <th @click="sort('modePickupType')"><a>Mode Pickup Type</a></th>
+                            <th @click="sort('avgEndgameStartTime')"><a>Avg EG Start Time</a></th>
+                            <th @click="sort('avgEstCycleTime')"><a>Avg Est. Cycle Time (s)</a></th>
+                            <th @click="sort('modeEndgameCS')"><a>Highest EG CS</a></th>
+                            <th @click="sort('modeDefence')"><a>Mode Defence</a></th>
+                            <th @click="sort('modeDefenceType')"><a>Mode Defence Type</a></th>
+                            <th @click="sort('modeCSCycle')"><a>Mode Cycle Over Charge Station</a></th>
+                            <th @click="sort('modeWin')"><a>Mode Win</a></th>
                             </tr>
                         </thead>
                         <tbody id="output"></tbody>
@@ -313,4 +313,14 @@ div {
   margin: modeAuto;
 
 }
+a{
+    color: black;
+}
+a:hover{
+    color: red;
+}
+.columns{
+    margin-left: 0.065%;
+}
+
 </style>
