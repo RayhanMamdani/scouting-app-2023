@@ -19,7 +19,7 @@ export const useTeamDataStore = defineStore({
         modeAutoStartPos: '',
         modePickupType: '',
         modeAutoPickupPos: '',
-        avgEndgameStartTime: '',
+        avgEndgameStartTime: null,
         avgEstCycleTime: null,
 
         modeEndgameCS: "", // N/A, Docked, Engaged | actually should be highest endgame CS but i dont want to change everything

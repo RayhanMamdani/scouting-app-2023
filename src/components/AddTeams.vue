@@ -25,6 +25,7 @@ const addTeam = () => {
     tournamentData.teamPush(teamNum);
     TeamDataService.create(teamData.teamData);
     teamData.$reset;
+    document.getElementById("teamNum").value = null;
     /*if (!tournamentData.teamCheck(teamNum)) {
         teamData.setTeamNum(teamNum);
         tournamentData.teamPush(teamNum);

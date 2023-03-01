@@ -59,6 +59,20 @@
 
       </div>
 </div>
+<div class="field my-5">
+    <label class="label"> Coopertition Bonus </label>
+    <div class="control">
+        <label class="radio mx-5">
+          <input type="radio" name="member" @input="setCSCycle(true)">
+          Yes
+        </label>
+        <label class="radio mx-5">
+          <input type="radio" name="member" @input="setCSCycle(false)">
+          No
+        </label>
+
+      </div>
+</div>
 
 <div class="field my-5">
     <label class="label"> Cycle Over Chargestation </label>
@@ -92,27 +106,20 @@
 </div>
 
 <div class="field">
-    <label class="label"> RP Gained</label>
-    <input class="input" type="number" placeholder="RP">
-</div>
-
-
-
-<div class="field">
   <label class="label">Comments</label>
   <div class="control">
-    <textarea class="textarea" placeholder="Special comments on this robot" id="comments" @change="setComments"></textarea>
+    <textarea class="textarea" placeholder="1. Driver Skill&#10;2. Penalties&#10;3. Any special comments on the robot or things not included yet" id="comments" @change="setComments"></textarea>
   </div>
 </div>
 
 
 
-<div class="field is-grouped">
-  <div class="control">
-    <button @click="matchPush(), createMatch(), this.$router.push('/')" class="button is-primary">Submit</button>
+<div class="field is-grouped columns">
+  <div class="control column">
+    <button @click="matchPush(), createMatch() " class="button is-primary">Submit</button>
   </div>
-  <div class="control">
-    <button class="button is-link is-light">Cancel</button>
+  <div class="control column">
+    <button @click ="cancel()" class="button is-link is-danger is-pulled-right">Abort Match</button>
   </div>
 </div>
 </div>
@@ -135,6 +142,13 @@ export default {
     }
   },
   methods: {
+
+    cancel(){
+      if(confirm("Are you sure you want to abort? All data will be lost!") ){
+        this.resetMatchData();
+        this.$router.push('/');
+      }
+    },
     getValue() {
       let x = document.getElementById('defence').value;
       gameData.setDefence(x);
@@ -152,6 +166,7 @@ export default {
       gameData.setComments(x);
     },
     matchPush() {
+
       if (!tournamentData.matchCheck(gameData.matchNum)) {
         tournamentData.matchPush(gameData.matchNum);
       }
@@ -169,12 +184,15 @@ export default {
       gameData.setWin(state);
     },
     async createMatch() {
+      if(confirm("Are you sure you want to submit?") ){
       MatchDataService.create(gameData.matchData);
       console.log(MatchDataService.getMatches())
       this.matches = await MatchDataService.getMatches(); // for some reason, this is taking a while and everything else is going ahead while this is still loading, so creating a match for a new team breaks it
       this.updateTeam();
       this.resetMatchData();
-      teamData.$reset();
+      this.$router.push('/')
+      }
+      
     },
     resetMatchData() {
       gameData.$reset()
@@ -217,7 +235,7 @@ export default {
           teamData.winPush(match.win);
         }
       })
-      console.log(teamData.estCycleTimeArray);
+      console.log(teamData.autoStartPosArray);
       let team = {
         teamNum: gameData.teamNum,
         modeCommunity: this.findMode(teamData.communityArray),
@@ -231,7 +249,7 @@ export default {
         modeAutoStartPos: this.findMode(teamData.autoStartPosArray),
         modePickupType: this.findMode(teamData.pickupTypeArray),
         modeAutoPickupPos: this.findMode(teamData.autoPickupPosArray),
-        avgEndgameStartTime: this.findAvgTime(teamData.endgameStartTimeArray),
+        avgEndgameStartTime: this.findAvg(teamData.endgameStartTimeArray),
         avgEstCycleTime: this.findAvg(teamData.estCycleTimeArray),
         modeEndgameCS: this.findHighestCS(teamData.endgameCSArray),
         modeDefence: this.findMode(teamData.defenceArray),
@@ -243,7 +261,7 @@ export default {
     },
     findMode(array) {
       console.log(array)
-      let validData = array.filter(data => data != '' || data == false);
+      let validData = array.filter(data => data !== '');
       console.log(validData)
       var mode = '';
       var frequency = {};  // array of frequency.

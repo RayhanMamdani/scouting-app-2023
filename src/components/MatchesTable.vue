@@ -92,7 +92,7 @@
                     //this.initPagination(this.matches);
                 }
             },
-            createRow(match) {
+            createRow(match) { // to make this have @click function, might need to make createRow a Vue component and just put currentMatch in gameData.js or something
                 let newRow = document.createElement('tr');
                 newRow.setAttribute('scope', 'row');
                 let newCell = document.createElement('td');
