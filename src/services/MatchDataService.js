@@ -13,6 +13,7 @@ class MatchDataService {
   }
 
   create(data) {
+    console.log("matchdataService: " + data)
     return http.post("/matches", data)
     .then(function(response){
       console.log(response);

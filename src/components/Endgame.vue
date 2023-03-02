@@ -144,6 +144,7 @@ export default {
   methods: {
 
     cancel(){
+      console.log(gameData.matchData);
       if(confirm("Are you sure you want to abort? All data will be lost!") ){
         this.resetMatchData();
         this.$router.push('/');
@@ -185,6 +186,7 @@ export default {
     },
     async createMatch() {
       if(confirm("Are you sure you want to submit?") ){
+        console.log(gameData.matchData);
       MatchDataService.create(gameData.matchData);
       console.log(MatchDataService.getMatches())
       this.matches = await MatchDataService.getMatches(); // for some reason, this is taking a while and everything else is going ahead while this is still loading, so creating a match for a new team breaks it

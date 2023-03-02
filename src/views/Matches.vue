@@ -3,13 +3,17 @@
         <Navbar/>
     </nav>
     <section>
-        <MatchesTable/>
+         <MatchesTable/> 
+      
+
     </section>
 </template>
 
 <script setup>
     import Navbar from '../components/Navbar.vue';
     import MatchesTable from '../components/MatchesTable.vue';
+    ;
+
 </script>
 
 <style scoped>

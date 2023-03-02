@@ -10,9 +10,9 @@
 
         <div class="columns is-centered">
           <div id="text-div" class="column is-8">
-            <h1 id="showcase-title" class="title is-1 has-text-white">Welcome to Team 7558 Scouting App!</h1>
+            <h1 id="showcase-title" class="title is-1 has-text-white">Welcome to the Team 7558 Scouting App!</h1>
             <p class="subtitle is-4 has-text-white">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque, ad maiores placeat ab at et neque facilis saepe corporis quisquam?
+             
             </p>
         </div>
       </div>
@@ -36,10 +36,10 @@
           <div @click="this.$router.push('/teams')" class="card">
             <div class="card-content">
               <h2 class="title is-4 has-text-white">
-                Data
+                Team Data
               </h2>
               <p class="subtitle is-6 has-text-white">
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, quaerat.
+               Average stats of teams
               </p>
             </div>
           </div>
@@ -52,7 +52,7 @@
                 Matches
               </h2>
               <p class="subtitle is-6 has-text-white">
-                Get feeds of your competitor's matches. Learn who'll pose a challenge to your team.
+                Matches played
               </p>
             </div>
           </div>

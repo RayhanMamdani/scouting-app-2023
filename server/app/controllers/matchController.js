@@ -4,7 +4,7 @@ const Match = db.matches;
 // Create and Save a new Match
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.teamNum) {
+  if (!req.body.matchNum) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
@@ -12,6 +12,7 @@ exports.create = (req, res) => {
   // Create a Match (CHANGE MATCH DATA PARAMS HERE)
   const match = new Match({
     matchNum: req.body.matchNum,
+    matchSide: req.body.matchSide,
     teamNum: req.body.teamNum,
     community: req.body.community,
     autoCS: req.body.autoCS,

@@ -15,8 +15,11 @@
         Scout
       </a>
 
-      <a class="navbar-item">
-        Competitions
+      <a class="navbar-item" @click = " this.$router.push('/teams')">
+        Teams
+      </a>
+      <a class="navbar-item" @click = " this.$router.push('/matches')">
+        Matches
       </a>
 
       <div class="navbar-item has-dropdown is-hoverable">

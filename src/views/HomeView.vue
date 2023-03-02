@@ -21,6 +21,18 @@
         <input class="input" type="number" id="matchNum">
       </div>
     </div>
+    <div class="field">
+      <label class="label">team:</label>
+      <div class="control">
+        <div class="select">
+      <select id="matchSide">
+        <option value = 'red'>Red</option>
+        <option value = 'blue'>Blue</option>
+      </select>
+    </div>
+  
+      </div>
+    </div>
     <span class="buttons is-centered">
 
       <button @click="scoutCheck" class=" is button is-danger is-large is-responsive mt-5">Scout Match</button>
@@ -33,9 +45,11 @@
 <script>
 import { useTournamentStore } from '../stores/tournamentData'
 import{useGameDataStore} from '../stores/gameData'
+import { createDOMCompilerError } from '@vue/compiler-dom'
 
 export default {
   setup() {
+    
   },
 
   methods: {
@@ -43,25 +57,33 @@ export default {
     scoutCheck() {
       let matchNum = document.getElementById('matchNum').value
       let teamNum = document.getElementById('teamNum').value
+      let matchSide = document.getElementById('matchSide').value
       document.getElementById('matchNum').value = null;
       document.getElementById('teamNum').value = null;
-     console.log( 'Match: ' + useTournamentStore().matchCheck(matchNum));
-     console.log( 'Team: ' + useTournamentStore().teamCheck(teamNum));
+     
 
 
       if ( useTournamentStore().teamCheck(teamNum) && useTournamentStore().matchCheck(matchNum)) {
         this.$router.push('/ScoutMatch')
         useGameDataStore().setMatchNum(matchNum);
         useGameDataStore().setTeamNum(teamNum);
+        useGameDataStore().setMatchSide(matchSide);
         
       } else {
         alert('please check you have entered correct data');
       }
     }
 
+  },
+  created(){
+    console.log('hello');
   }
+
+  
 }
+
 </script>
+
 
 
 <style scoped>

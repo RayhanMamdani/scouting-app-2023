@@ -2,7 +2,7 @@
 
 <template>
     <div>
-        
+        <button @click="test(gameData.matchSide)"> test</button>
     </div>
 
     <div class="columns is-flex is-justify-content-center" style=" margin-top: 5%; margin-bottom: 5%">
@@ -81,10 +81,8 @@
 
 </template>
 <script setup>
-import Navbar from '../components/Navbar.vue'
 import Grid from '../components/Grid.vue'
 import Chargestation from '../components/Chargestation.vue'
-import Community from '../components/Community.vue'
 import Endgame from '../components/Endgame.vue'
 import AutoStartPos from '../components/AutoStartPos.vue'
 import AutoPickupPos from '../components/AutoPickupPos.vue'

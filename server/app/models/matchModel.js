@@ -5,6 +5,7 @@ module.exports = mongoose => {
         {
             // PUT WHATEVER MATCH DATA WE NEED IN HERE !!! 
           matchNum: Number,
+          matchSide: String,
           teamNum: Number,
           community: Boolean,
           autoCS: String,

@@ -7,6 +7,7 @@ export const useGameDataStore = defineStore({
 
     state: () => ({
         matchNum: 0,
+        matchSide: '', 
         teamNum: 0,
         gameState: 'auto', // 3 states auto,teleop,endgame for switching components
         community: false,
@@ -58,6 +59,7 @@ export const useGameDataStore = defineStore({
 
             let match = {
                 matchNum: state.matchNum,
+                matchSide: state.matchSide,
                 teamNum: state.teamNum,
                 community: state.community,
                 autoCS: state.autoCS,
@@ -203,6 +205,10 @@ export const useGameDataStore = defineStore({
         },
         setComments(text){
             this.comments = text;
+        },
+        setMatchSide(side){
+            this.matchSide = side;
         }
+        
     }
 })
