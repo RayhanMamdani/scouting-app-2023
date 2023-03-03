@@ -7,37 +7,37 @@
         <table class="table has-background-dark is-bordered is-hoverable is-fullwidth has-text-white-ter">
           <thead>
             <tr>
-              <th @click= "sort()" class="has-text-white has-text-weight-bold" title="Match ID" scope="col" id="match">Match</th>
-              <th class="has-text-white has-text-weight-bold" title="Red Alliance Robot #1" scope="col">R1</th>
-              <th class="has-text-white has-text-weight-bold" title="Red Alliance Robot #2" scope="col">R2</th>
-              <th class="has-text-white has-text-weight-bold" title="Red Alliance Robot #3" scope="col">R3</th>
-              <th class="has-text-white has-text-weight-bold" title="Blue Alliance Robot #1" scope="col">B1</th>
-              <th class="has-text-white has-text-weight-bold" title="Blue Alliance Robot #2" scope="col">B2</th>
-              <th class="has-text-white has-text-weight-bold" title="Blue Alliance Robot #3" scope="col">B3</th>
+              <th @click= "sort()" class="has-text-white has-text-weight-bold" title="Match ID" scope="col" id="match">Match #</th>
+              <th class="has-text-white has-text-weight-bold" title="Red Alliance Robot #1" scope="col">R Bot 1</th>
+              <th class="has-text-white has-text-weight-bold" title="Red Alliance Robot #2" scope="col">R Bot 2</th>
+              <th class="has-text-white has-text-weight-bold" title="Red Alliance Robot #3" scope="col">R Bot 3</th>
+              <th class="has-text-white has-text-weight-bold" title="Blue Alliance Robot #1" scope="col">B Bot 1</th>
+              <th class="has-text-white has-text-weight-bold" title="Blue Alliance Robot #2" scope="col">B Bot 2</th>
+              <th class="has-text-white has-text-weight-bold" title="Blue Alliance Robot #3" scope="col">B Bot 3</th>
               <th class="has-text-white has-text-weight-bold" title="Which Alliance Won the Match" scope="col">Winner</th>
             </tr>
           </thead>
           <tbody  v-for="data in matchData">
             <td >
-              <h6 v-on:click="this.$router.push(`match/${data.matchNum}`)" >{{ data.matchNum }}</h6>
+              <h6 @click="this.$router.push(`match/${data.matchNum}`)" >{{ data.matchNum }}</h6>
             </td>
             <td class="has-text-danger">
-              <h6 class="underline" v-on:click="this.$router.push(`match?match=${data.r1}`)">{{ data.r1 }}</h6>
+              <h6 class="underline" >{{ data.r1 }}</h6>
             </td>
             <td class="has-text-danger">
-              <h6 class="" v-on:click="this.$router.push(`team?team=${data.r2}`)">{{ data.r2 }}</h6>
+              <h6 class="" >{{ data.r2 }}</h6>
             </td>
             <td class="has-text-danger">
-              <h6 class="underline" v-on:click="this.$router.push(`team?team=${data.r3}`)">{{ data.r3 }}</h6>
+              <h6 class="underline" >{{ data.r3 }}</h6>
             </td>
             <td class="has-text-info">
-              <h6 class="underline" v-on:click="this.$router.push(`team?team=${data.b1}`)">{{ data.b1 }}</h6>
+              <h6 class="underline" >{{ data.b1 }}</h6>
             </td>
             <td class="has-text-info">
-              <h6 class="underline" v-on:click="this.$router.push(`team?team=${data.b2}`)">{{ data.b2 }}</h6>
+              <h6 class="underline" >{{ data.b2 }}</h6>
             </td>
             <td class="has-text-info">
-              <h6 class="underline" v-on:click="this.$router.push(`team?team=${data.r1}`)">{{ data.b3 }}</h6>
+              <h6 class="underline" >{{ data.b3 }}</h6>
             </td>
             <td>
               <h6>{{ data.win }}</h6>
@@ -92,7 +92,7 @@
           }
         });
         this.matchData.sort((a, b) => a.matchNum - b.matchNum)
-        console.log(num);
+       
       },
   
       getMatchData(matchNum) {
@@ -105,7 +105,7 @@
         this.matches.forEach((team) => {
           if (team.matchNum == matchNum && team.matchSide === "blue") {
             teamBlue.push(team);
-          } else if (team.matchNum === matchNum) {
+          } else if (team.matchNum === matchNum && team.matchSide === "red") {
             teamRed.push(team);
           }
         });
@@ -165,3 +165,12 @@
   
   
   </script>
+
+  <style>
+
+td:hover {
+  opacity: 0.5;
+  cursor: default;
+}
+
+</style>

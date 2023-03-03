@@ -104,13 +104,13 @@ export const useTeamDataStore = defineStore({
             this.gpTotalScoreArray.push(num);
         },
         autoStartPosPush(pos) {
-            this.autoStartPosArray.push(pos);
+            this.autoStartPosArray = this.autoStartPosArray.concat(pos);
         },
         pickupTypePush(type) {
-            this.pickupTypeArray.push(type);
+           this.pickupTypeArray = this.pickupTypeArray.concat(type);
         },
         autoPickupPosPush(pos) {
-            this.autoPickupPosArray.push(pos);
+            this.autoPickupPosArray.concat(pos);
         },
         endgameStartTimePush(time) {
             this.endgameStartTimeArray.push(time);

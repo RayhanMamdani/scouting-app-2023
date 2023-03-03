@@ -4,7 +4,7 @@ class MatchDataService {
   async getMatches() {
     const res = await http.get("/matches");
     const data = res.data;
-    console.log(data);
+   
     return data;
   }
 
@@ -13,13 +13,13 @@ class MatchDataService {
   }
 
   create(data) {
-    console.log("matchdataService: " + data)
+  
     return http.post("/matches", data)
     .then(function(response){
-      console.log(response);
+      
     })
     .catch(function(err) {
-      console.log(err)
+     console.log(err)
     });
   }
 

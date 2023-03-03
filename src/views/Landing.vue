@@ -1,19 +1,19 @@
 
 <template>
-<nav>
-  <Navbar/>
-</nav>
+  <nav>
+    <Navbar />
+  </nav>
   <div id="page">
 
     <!--Background and Welcome messsage plus a small set of sentences-->
     <section id="showcase" class="text-light text-center text-small-center ">
 
-        <div class="columns is-centered">
-          <div id="text-div" class="column is-8">
-            <h1 id="showcase-title" class="title is-1 has-text-white">Welcome to the Team 7558 Scouting App!</h1>
-            <p class="subtitle is-4 has-text-white">
-             
-            </p>
+      <div class="columns is-centered">
+        <div id="text-div" class="column is-8">
+          <h1 id="showcase-title" class="title is-1 has-text-white">Welcome to the Team 7558 Scouting App!</h1>
+          <p class="subtitle is-4 has-text-white">
+
+          </p>
         </div>
       </div>
     </section>
@@ -21,51 +21,58 @@
     <section class="section">
       <div class="columns is-centered">
 
-        <div class="column is-3">
-          <div @click="this.$router.push('/Home')" class="card">
+        <div  class="column is-3">
+          <div  class="card">
             <div class="card-content">
-              <h2 class="title is-4 has-text-white">Test</h2>
-              <p class="subtitle is-6 has-text-white">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, sunt.
-              </p>
+              <h2 class="title is-4 has-text-white">Match Search</h2>
+              <div class="field has-addons">
+                <div class="control ">
+                  <input class="input " type="number" id="matchNum" placeholder="Match # ">
+                </div>
+                <div class="control">
+                  <a  @click ="matchSearch()" class="button is-light">
+                    Go
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="column is-3">
-          <div @click="this.$router.push('/teams')" class="card">
+        <div  class="column is-3" id ="tile">
+          <div  @click="this.$router.push('/teams')" class="card">
             <div class="card-content">
               <h2 class="title is-4 has-text-white">
                 Team Data
               </h2>
               <p class="subtitle is-6 has-text-white">
-               Average stats of teams
+                Look at the average stats and metrics of teams throughout the tournament
               </p>
             </div>
           </div>
         </div>
 
-        <div class="column is-3">
-          <div @click="this.$router.push('/matches')" class="card">
+        <div  class="column is-3" id ="tile">
+          <div  @click="this.$router.push('/matches')" class="card">
             <div class="card-content">
               <h2 class="title is-4 has-text-white">
                 Matches
               </h2>
               <p class="subtitle is-6 has-text-white">
-                Matches played
+                Break down of all scouted matches
               </p>
             </div>
           </div>
         </div>
-        
-        <div class="column is-3">
-          <div @click="this.$router.push('/home')" class="card">
+
+        <div class="column is-3" id ="tile">
+          <div  @click="this.$router.push('/home')" class="card">
             <div class="card-content">
               <h2 class="title is-4 has-text-white">
                 Scout Match
               </h2>
               <p class="subtitle is-6 has-text-white">
-                Learn your opponent's strategies and techniques. Nullify their game plan and secure the win.
+                Learn your opponent's strategies and techniques.
               </p>
             </div>
           </div>
@@ -80,25 +87,24 @@ import Navbar from '../components/Navbar.vue';
 
 export default {
 
-  data(){
-    return{
-      gameState:"auto"
+  data() {
+    return {
+      gameState: "auto"
     }
 
   },
-    name: "Landing",
-    methods: {
-        test() {
-            console.log("hello");
-        }
+  name: "Landing",
+  methods: {
+    matchSearch(){
+      let matchNum = document.getElementById('matchNum').value;
+      this.$router.push('/match/'+ matchNum)
     },
-    components: { Navbar }
+  },
+  components: { Navbar }
 };
 </script>
 
 <style scoped>
-
-
 #text-div {
   padding: 150px 0;
   width: 60%;
@@ -106,22 +112,20 @@ export default {
 
 .card {
   height: 100%;
-  width: 87.5%; 
+  width: 87.5%;
   background-color: rgb(51, 50, 50);
-  
+
 }
 
-.card :hover{
+
+#tile :hover {
   opacity: 0.5;
   cursor: default;
 }
 
-#page{
-  background: linear-gradient(135deg, #AE0009, #e24138)
+#page {
+  background-color: gray; 
 }
-
-
-
 </style>
 
 

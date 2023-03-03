@@ -7,8 +7,8 @@ export const useTournamentStore = defineStore({
 
     state: () => ({
         
-       teams: [7558,1241,1114,1234,1111],
-       matchesPlayed: [1,3,4,2]
+       teams: [188,610,771,1246,1305,2056,2200,2386,2702,4476,4946,4951,5036,5409,5719,5834,6140,6141,6378,6397,6514,6866,6975,6987,7476,7480,7558,7603,7712,7902,8349,8850,9113,9127],
+       matchesPlayed: []
 
 
 
@@ -18,7 +18,8 @@ export const useTournamentStore = defineStore({
     },
     actions: {
         matchCheck(match){
-       return this.matchesPlayed.every( x => x != match);
+            
+       return this.matchesPlayed.every( x => x !== match);
         },
 
         teamCheck(team){

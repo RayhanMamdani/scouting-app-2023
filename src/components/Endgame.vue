@@ -1,6 +1,6 @@
 <template>
     <div>
-
+      <!-- <button @click="test()">DELETE </button> -->
         <div class="field">
   <label class="label">Scout Name</label>
   <div class="control">
@@ -59,20 +59,7 @@
 
       </div>
 </div>
-<div class="field my-5">
-    <label class="label"> Coopertition Bonus </label>
-    <div class="control">
-        <label class="radio mx-5">
-          <input type="radio" name="member" @input="setCSCycle(true)">
-          Yes
-        </label>
-        <label class="radio mx-5">
-          <input type="radio" name="member" @input="setCSCycle(false)">
-          No
-        </label>
 
-      </div>
-</div>
 
 <div class="field my-5">
     <label class="label"> Cycle Over Chargestation </label>
@@ -142,12 +129,15 @@ export default {
     }
   },
   methods: {
-
+    test(){
+      MatchDataService.deleteAll();
+    },
     cancel(){
-      console.log(gameData.matchData);
+    
       if(confirm("Are you sure you want to abort? All data will be lost!") ){
         this.resetMatchData();
         this.$router.push('/');
+        
       }
     },
     getValue() {
@@ -185,10 +175,10 @@ export default {
       gameData.setWin(state);
     },
     async createMatch() {
+      gameData.setautoScore()
       if(confirm("Are you sure you want to submit?") ){
-        console.log(gameData.matchData);
       MatchDataService.create(gameData.matchData);
-      console.log(MatchDataService.getMatches())
+      
       this.matches = await MatchDataService.getMatches(); // for some reason, this is taking a while and everything else is going ahead while this is still loading, so creating a match for a new team breaks it
       this.updateTeam();
       this.resetMatchData();
@@ -206,11 +196,11 @@ export default {
           teamID = team._id;
         }
       })
-      console.log(teamID)
+      
       TeamDataService.update(teamID, this.teamAvg())
     },
     teamAvg() {
-      console.log(this.matches)
+    
       this.matches.forEach(match => {
         if (match.teamNum == gameData.teamNum) {
           // add arrays to teamData.js for every team avg attribute and then average them here
@@ -237,7 +227,7 @@ export default {
           teamData.winPush(match.win);
         }
       })
-      console.log(teamData.autoStartPosArray);
+      
       let team = {
         teamNum: gameData.teamNum,
         modeCommunity: this.findMode(teamData.communityArray),
@@ -262,9 +252,9 @@ export default {
       return team;
     },
     findMode(array) {
-      console.log(array)
+      
       let validData = array.filter(data => data !== '');
-      console.log(validData)
+      
       var mode = '';
       var frequency = {};  // array of frequency.
       var maxFreq = 0;  // holds the max frequency.
@@ -304,7 +294,7 @@ export default {
       }
     },
     findAvgTime(array) {
-      console.log(array)
+      
       let totalSecs = 0;
       let validTimes = 0;
       array.forEach(time => {

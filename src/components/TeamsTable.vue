@@ -1,37 +1,38 @@
 <template>
+ 
     <div class="container">
-        <div class="box my-4 is-dark">
+        <div class="box has-background-dark my-4 ">
             <div class="has-text-centered">
-                <h1 class="title mb-2" style="color: red;">Teams</h1>
+                <h1 class="title mb-2 has-text-light" >Newmarket Teams</h1>
             </div>
             <div class="columns">
                 <input type="text" class="input column is-one-quarter" name="teamFilter" id="teamFilter" placeholder="Filter by team number" @input="filterTeams();">
             </div>
             <div>
                 <div class="table-container">
-                    <label class="label">Columns are sortable!</label>
-                    <table class="table is-bordered is-sthiped is-hoverable is-fullwidth">
+                    <label class="label has-text-light">Columns are sortable!</label>
+                    <table class="table is-bordered has-background-grey is-fullwidth has-text-light">
                         <thead>
                         <tr>
                             <th @click="sort('teamNum')"><a>Team #</a></th>
                             <th @click="sort('modeAutoStartPos')"><a>Mode Auto Start Pos</a></th>
                             <th @click="sort('modeAutoPickupPos')"><a>Mode Auto Pickup Pos</a></th>
-                            <th @click="sort('modeAutoCS')"><a>Highest Auto CS</a></th>
+                            <th @click="sort('modeAutoCS')"><a>Avg Auto CS</a></th>
                             <th @click="sort('avgGpAutoTotal')"><a>Avg Auto GP Total</a></th>
                             <th @click="sort('avgGpAutoScore')"><a>Avg Auto GP Score</a></th>
                             <th @click="sort('avgGpTeleopTotal')"><a>Avg Teleop GP Total</a></th>
                             <th @click="sort('avgGpTeleopScore')"><a>Avg Teleop GP Score</a></th>
                             <th @click="sort('avgGpTotal')"><a>Avg Combined GP Total</a></th>
                             <th @click="sort('avgGpTotalScore')"><a>Avg Combined GP Score</a></th>
-                            <th @click="sort('modeCommunity')"><a>Mode Community</a></th>
+                         
                             <th @click="sort('modePickupType')"><a>Mode Pickup Type</a></th>
                             <th @click="sort('avgEndgameStartTime')"><a>Avg EG Start Time</a></th>
                             <th @click="sort('avgEstCycleTime')"><a>Avg Est. Cycle Time (s)</a></th>
                             <th @click="sort('modeEndgameCS')"><a>Highest EG CS</a></th>
                             <th @click="sort('modeDefence')"><a>Mode Defence</a></th>
                             <th @click="sort('modeDefenceType')"><a>Mode Defence Type</a></th>
-                            <th @click="sort('modeCSCycle')"><a>Mode Cycle Over Charge Station</a></th>
-                            <th @click="sort('modeWin')"><a>Mode Win</a></th>
+                            <th @click="sort('modeCSCycle')"><a> Cycle Over Charge Station</a></th>
+                            <th @click="sort('modeWin')"><a> Winning Record?</a></th>
                             </tr>
                         </thead>
                         <tbody id="output"></tbody>
@@ -50,7 +51,8 @@
 </template>
 
 <script>
-    import TeamDataService from '../services/TeamDataService.js'
+    import MatchDataService from '../services/MatchDataService';
+import TeamDataService from '../services/TeamDataService.js'
     //import { defineCustomElement } from 'vue';
 
     export default {
@@ -67,6 +69,7 @@
             }
         },
         methods: {
+           
             async getTeams() {
                 return await TeamDataService.getTeams();
             },
@@ -121,9 +124,6 @@
                 newCell.appendChild(document.createTextNode(team.avgGpTotalScore));
                 newRow.appendChild(newCell);
                 newCell = document.createElement('td');
-                newCell.appendChild(document.createTextNode(team.modeCommunity));
-                newRow.appendChild(newCell);
-                newCell = document.createElement('td');
                 newCell.appendChild(document.createTextNode(team.modePickupType));
                 newRow.appendChild(newCell);
                 newCell = document.createElement('td');
@@ -148,12 +148,7 @@
                 newCell.appendChild(document.createTextNode(team.modeWin));
                 newRow.appendChild(newCell);
                 newCell = document.createElement('td');
-                let button = document.createElement('button');
-                button.setAttribute('class', 'button is-danger');
-                button.appendChild(document.createTextNode('Delete'));
-                button.addEventListener('click', console.log('test')); //'this.deleteTeam(team._id)'
-                newCell.appendChild(button);
-                newRow.appendChild(newCell);
+               
                 
                 return newRow;
             },
@@ -253,6 +248,8 @@
 
                 this.filterTeams();
             },
+
+          
             filterTeams() {
                 let teamFilterValue = document.querySelector('#teamFilter').value;
                 if (teamFilterValue != 0) {
@@ -314,7 +311,8 @@ div {
 
 }
 a{
-    color: black;
+    color: white;
+    
 }
 a:hover{
     color: red;

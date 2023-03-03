@@ -3,29 +3,29 @@
   <div class=" is-flex ">
 
   </div>
-  <div class="container box mt-6">
+  <div class="container box mt-6 has-background-dark ">
     <span class=" is-flex is-justify-content-center my-5 is-">
       <img src="../assets/Charged_Up_Logo.svg.png" alt="Charged Up" width="200" height="100">
     </span>
 
-    <div class="field">
-      <label class="label">Team Number:</label>
-      <div class="control">
-        <input class="input" type="number" id="teamNum">
+    <div class="field ">
+      <label class="label has-text-white">Team Number:</label>
+      <div class="control ">
+        <input class="input has-background-grey has-text-white" type="number" id="teamNum">
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Match Number:</label>
+      <label class="label has-text-white">Match Number:</label>
       <div class="control">
-        <input class="input" type="number" id="matchNum">
+        <input class="input has-background-grey has-text-white" type="number" id="matchNum">
       </div>
     </div>
-    <div class="field">
-      <label class="label">team:</label>
+    <div class="field ">
+      <label class="label has-text-white has-text-white">Team Color:</label>
       <div class="control">
-        <div class="select">
-      <select id="matchSide">
+        <div class="select ">
+      <select id="matchSide" class="has-background-grey has-text-white">
         <option value = 'red'>Red</option>
         <option value = 'blue'>Blue</option>
       </select>
@@ -76,7 +76,7 @@ export default {
 
   },
   created(){
-    console.log('hello');
+    
   }
 
   

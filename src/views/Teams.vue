@@ -1,6 +1,6 @@
 <template>
 <Navbar/>
-<AddTeams/>
+
 <TeamsTable/>
 
 </template>

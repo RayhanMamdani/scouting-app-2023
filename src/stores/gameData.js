@@ -11,7 +11,9 @@ export const useGameDataStore = defineStore({
         teamNum: 0,
         gameState: 'auto', // 3 states auto,teleop,endgame for switching components
         community: false,
-        autoCS: "Parked", //Docked, Engaged, Parked
+        autoCS: "None", //Docked, Engaged, Parked
+       
+        autoScore:0,
         gpTotal: 0,//total number of gamepieces scored (total indexes of gamepiece array)
         gpScored: [], // score gamepiece array from grid
         gpAutoTotal: 0,
@@ -21,8 +23,9 @@ export const useGameDataStore = defineStore({
         gpTotalScore: 0,
        
         autoStartPos: '',
-        pickupType: '',
-        autoPickupPos: '',
+        pickupType: [],
+        pickupTotal: 0,
+        autoPickupPos: [],
         endgameStartTime: null,
         estCycleTime: null,
 
@@ -37,32 +40,18 @@ export const useGameDataStore = defineStore({
 
     }),
     getters: {
-        matchData(state) {
-            /*let match = [];
-            match.push(state.matchNum);
-            match.push(state.teamNum);
-            match.push(state.community);
-            match.push(state.autoCS);
-            match.push(state.gpTotal);
-            match.push(state.gpAutoTotal);
-            match.push(state.gpTeleopTotal);
-            match.push(state.gpAutoScore);
-            match.push(state.gpTeleopScore);
-            match.push(state.gpTotalScore);
-            match.push(state.autoStartPos);
-            match.push(state.pickupType);
-            match.push(state.autoPickupPos);
-            match.push(state.CSCycle);
-            match.push(state.endgameStartTime);
-            match.push(state.endgameCS);
-            return match;*/
 
+        
+        matchData(state) {
+          
             let match = {
                 matchNum: state.matchNum,
                 matchSide: state.matchSide,
                 teamNum: state.teamNum,
                 community: state.community,
                 autoCS: state.autoCS,
+                autoScore: state.autoScore,
+                
                 gpTotal: state.gpTotal,
                 gpAutoTotal: state.gpAutoTotal,
                 gpTeleopTotal: state.gpTeleopTotal,
@@ -71,6 +60,7 @@ export const useGameDataStore = defineStore({
                 gpTotalScore: state.gpTotalScore,
                 autoStartPos: state.autoStartPos,
                 pickupType: state.pickupType,
+                pickupTotal:state.pickupTotal,
                 autoPickupPos: state.autoPickupPos,
                 CSCycle: state.CSCycle,
                 endgameStartTime: state.endgameStartTime,
@@ -121,6 +111,17 @@ export const useGameDataStore = defineStore({
                 }
             }
         },
+        setautoScore(){
+            if(this.autoCS === 'Docked')
+            this.autoScore += 8;
+            else if(this.autoCS === 'Engaged')
+            this.autoScore +=12
+
+            if(this.community)
+            this.autoScore += 3
+
+            this.autoScore += this.gpAutoScore
+        },
         gpRemove(){
             let gp = this.gpScored[this.gpScored.length - 1]
             if (gp.gameState === 'auto') {
@@ -160,6 +161,9 @@ export const useGameDataStore = defineStore({
         },
         setAutoCS(state) {
             this.autoCS = state;
+            
+
+
         },
         setMatchNum(num) {
             this.matchNum = num;
@@ -170,11 +174,24 @@ export const useGameDataStore = defineStore({
         setAutoStartPos(position){
             this.autoStartPos = position;
         },
-        setPickupType(state){
-            this.pickupType = state;
+        setPickupType(type){
+            
+            this.pickupType.push(type)
+            this.pickupTotal = this.pickupType.length;
+
+        },
+        removePickupType(){
+            this.pickupType.splice(this.pickupType.length-1);
+            this.pickupTotal = this.pickupType.length;
+
         },
         setAutoPickupPos(position){
-            this.autoPickupPos = position;
+            if(this.autoPickupPos.includes(position)){
+                this.autoPickupPos.splice(this.autoPickupPos.indexOf(position),1);
+            }else{
+            this.autoPickupPos.push(position);
+            }
+
         },
         setCSCycle(state){
             this.CSCycle = state;
@@ -189,7 +206,7 @@ export const useGameDataStore = defineStore({
             let cyclePeriod = 135 - EGStartTimeInSecs
             let cycleTime = cyclePeriod / this.gpTeleopTotal
             this.estCycleTime = parseFloat(cycleTime.toFixed(2))
-            console.log(this.estCycleTime)
+          
         },
         setDefence(state){
             this.defence = state;

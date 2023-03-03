@@ -4,7 +4,7 @@ class TeamDataService {
   async getTeams() {
     const res = await http.get("/teams");
     const data = res.data;
-    console.log(data);
+ 
     return data;
   }
 
@@ -15,20 +15,20 @@ class TeamDataService {
   create(data) {
     return http.post("/teams", data)
     .then(function(response){
-      console.log(response);
+      
     })
     .catch(function(err) {
-      console.log(err)
+      
     });
   }
 
   update(id, data) {
     return http.put(`/teams/${id}`, data)
     .then(function(response){
-      console.log(response);
+     
     })
     .catch(function(err) {
-      console.log(err)
+      
     });
   }
 

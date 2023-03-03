@@ -16,6 +16,8 @@ exports.create = (req, res) => {
     teamNum: req.body.teamNum,
     community: req.body.community,
     autoCS: req.body.autoCS,
+   
+    autoScore: req.body.autoScore,
     gpTotal: req.body.gpTotal,
     gpAutoTotal: req.body.gpAutoTotal,
     gpTeleopTotal: req.body.gpTeleopTotal,
@@ -24,6 +26,7 @@ exports.create = (req, res) => {
     gpTotalScore: req.body.gpTotalScore,
     autoStartPos: req.body.autoStartPos,
     pickupType: req.body.pickupType,
+    pickupTotal: req.body.pickupTotal,
     autoPickupPos: req.body.autoPickupPos,
     CSCycle: req.body.CSCycle,
     endgameStartTime: req.body.endgameStartTime,

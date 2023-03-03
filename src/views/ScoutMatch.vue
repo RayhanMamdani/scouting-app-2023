@@ -2,7 +2,7 @@
 
 <template>
     <div>
-        <button @click="test(gameData.matchSide)"> test</button>
+    
     </div>
 
     <div class="columns is-flex is-justify-content-center" style=" margin-top: 5%; margin-bottom: 5%">
@@ -60,7 +60,19 @@
                 <div class="card has-text-centered mb-2">
                     <p class="title is-size-10 mb-3">{{ gameData.gpTotalScore }}</p>
                 </div>
+
+                <div class="tile is-vertical is-pulled-left is-centered"
+                v-show=  "gameData.gameState === 'teleop'">
+                <label class="label is-size-6 has-text-centered">Pickup:</label>
+                <div class="buttons tile has-addons has-text-centered is-pulled-left ">
+                    <button class=" button is-large is-dark column px-5 is-static" >{{ gameData.pickupTotal }}</button>
+                    <button @click="gameData.removePickupType()" class=" button is-large is-dark column px-5">-</button>
+                </div>
+            </div>
                 <Chargestation v-show="gameData.gameState == 'auto'"/>
+
+        
+                
             </div>
         </div>
 
@@ -68,13 +80,13 @@
 
     <div class="columns">
         <div class="column is-one-quarter">
-            
+           
         </div>
         <div class="column is-one-half">
             <AutoStartPos v-show="gameData.gameState == 'auto'" class="is-centered"/>
         </div>
         <div class="column is-one-quarter">
-
+            <Mobility v-show="gameData.gameState == 'auto'" class="is-pulled-left mb-3"/>
         </div>
 
     </div>
@@ -86,6 +98,7 @@ import Chargestation from '../components/Chargestation.vue'
 import Endgame from '../components/Endgame.vue'
 import AutoStartPos from '../components/AutoStartPos.vue'
 import AutoPickupPos from '../components/AutoPickupPos.vue'
+import Mobility from '../components/Mobility.vue'
 
 import { useGameDataStore } from '../stores/gameData'
 
@@ -93,12 +106,12 @@ const gameData = useGameDataStore();
 
 function setEndgameStartTime() {
     const time = document.getElementById('input2').value;
-    console.log(time)
+   
     gameData.setEndgameStartTime(time);
 }
 
 const test = (msg) => {
-    console.log(msg);
+    
 }
 </script>
 

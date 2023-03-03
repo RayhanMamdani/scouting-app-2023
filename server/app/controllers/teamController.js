@@ -22,7 +22,7 @@ exports.create = (req, res) => {
     avgGpTotalScore: req.body.avgGpTotalScore,
     modeAutoStartPos: req.body.modeAutoStartPos,
     modePickupType: req.body.modePickupType,
-    modeAutoPickupPos: req.body.modeAutoPickupPos,
+     modeAutoPickupPos: req.body.modeAutoPickupPos,
     avgEndgameStartTime: req.body.avgEndgameStartTime,
     avgEstCycleTime: req.body.avgEstCycleTime,
     modeEndgameCS: req.body.modeEndgameCS,
@@ -82,7 +82,7 @@ exports.findOne = (req, res) => {
 
 // Update a Team by the id in the request
 exports.update = (req, res) => {
-  console.log(req.body)
+
     if (!req.body) {
         return res.status(400).send({
           message: "Data to update can not be empty!"
@@ -100,7 +100,7 @@ exports.update = (req, res) => {
           } else res.send({ message: "Team was updated successfully." });
         })
         .catch(err => {
-          console.log(req.body);
+          
           res.status(500).send({
             message: "Error updating Team with id=" + id
           });
