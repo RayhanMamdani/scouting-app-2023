@@ -175,7 +175,7 @@ export default {
       gameData.setWin(state);
     },
     async createMatch() {
-      gameData.setautoScore()
+      gameData.setAutoScore();
       if(confirm("Are you sure you want to submit?") ){
       MatchDataService.create(gameData.matchData);
       

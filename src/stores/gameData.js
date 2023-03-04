@@ -111,7 +111,7 @@ export const useGameDataStore = defineStore({
                 }
             }
         },
-        setautoScore(){
+        setAutoScore(){
             if(this.autoCS === 'Docked')
             this.autoScore += 8;
             else if(this.autoCS === 'Engaged')
