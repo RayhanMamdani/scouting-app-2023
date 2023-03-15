@@ -14,8 +14,8 @@ module.exports = mongoose => {
             avgGpTeleopScore: Number,
             avgGpTotalScore: Number,
             modeAutoStartPos: String,
-             modePickupType: String,
-             modeAutoPickupPos: String,
+            modePickupType: String,
+            modeAutoPickupPos: String,
             avgEndgameStartTime: Number,
             avgEstCycleTime: Number,
             modeEndgameCS: String,
@@ -24,7 +24,8 @@ module.exports = mongoose => {
             modeCSCycle: Boolean,
             modeWin: Boolean,
         },
-        { timestamps: true }
+        { timestamps: true },
+        { typeKey: '$type' }
       )
     );
   

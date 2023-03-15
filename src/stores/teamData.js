@@ -110,7 +110,7 @@ export const useTeamDataStore = defineStore({
            this.pickupTypeArray = this.pickupTypeArray.concat(type);
         },
         autoPickupPosPush(pos) {
-            this.autoPickupPosArray.concat(pos);
+          this.autoPickupPosArray= this.autoPickupPosArray.concat(pos);
         },
         endgameStartTimePush(time) {
             this.endgameStartTimeArray.push(time);

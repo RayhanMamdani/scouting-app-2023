@@ -23,6 +23,15 @@ module.exports = app => {
   
     // Delete all Matches
     router.delete("/", Matches.deleteAll);
-  
+
+    app.get('/*', function(req, res) {
+      res.sendFile(path.join(__dirname, '../dist/index.html' ), function(err) {
+        if (err) {
+          res.status(500).send(err)
+        }
+      })
+    })
     app.use('/api/Matches', router);
+
+   
   };

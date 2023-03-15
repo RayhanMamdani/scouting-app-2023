@@ -4,13 +4,15 @@
         <Navbar />
     </nav>
     <div class="has-text-centered  p-2">
-        <h1 class="title my-5 has-text-white"> Match #{{ this.matchNum }} Summary</h1>
-        <h1 class="subtitle is-5 has-text-white is-dark my-1"> Winner: {{ this.Win }} </h1>
+        <h1 class="title my-5 has-text-white">Match Summary</h1>
+        
     </div>
     <div class="container">
         <div class="box my-4 has-background-dark">
-            <div class=" ">
-                <h1 class="title is-4 mb-5 has-text-danger"> Red Alliance </h1>
+            <div>
+                <h1 class="title is-4 mb-5 has-text-danger"> Red Alliance </h1> 
+                <h1 class="title is-5 has-text-success is-dark my-1" v-show="Win === 'Red Alliance'"> Win </h1>
+                
             </div>
 
 
@@ -92,7 +94,7 @@
                         </td>
                         <td>
                             <h6>{{ data.CSCycle }}</h6>
-                        </td>
+                        </td> 
 
                     </tbody>
 
@@ -119,8 +121,9 @@
         </div>
 
         <div class="box my-4 has-background-dark">
-            <div class=" ">
+            <div>
                 <h1 class="title is-4 mb-5 has-text-info"> Blue Alliance </h1>
+                <h1 class="title is-5 has-text-success is-dark my-1" v-show="Win === 'Blue Alliance'"> Win </h1>
             </div>
             <div class="table-container">
 
@@ -224,13 +227,7 @@
                 </section>
             </div>
         </div>
-    <!--<nav class="pagination" role="navigation" aria-label="pagination">
-        <a class="pagination-previous">Previous</a>
-        <a class="pagination-next">Next page</a>
-        <ul class="pagination-list" id="pagination">
-            
-        </ul>
-            </nav>-->
+   
     </div>
 </template>
 
@@ -281,117 +278,6 @@ export default {
   return maxValue;
 },
 
-
-        sort(field) {
-            if (field === undefined) {
-                // called from filter
-                field = this.currentSortField;
-            } else if (field === this.currentSortField) {
-                this.sortDirection = this.sortDirection === 'ASC' ? 'DESC' : 'ASC';
-                this.currentSortField = field;
-            } else {
-                this.sortDirection = 'ASC';
-                this.currentSortField = field;
-            }
-
-            if (this.sortDirection === 'ASC') {
-                if (field === 'teamNum') {
-                    this.matches.sort((a, b) => a.teamNum - b.teamNum);
-                } else if (field === 'matchNum') {
-                    this.matches.sort((a, b) => a.matchNum - b.matchNum);
-                } else if (field === 'autoStartPos') {
-                    this.matches.sort((a, b) => a.autoStartPos.localeCompare(b.autoStartPos));
-                } else if (field === 'autoPickupPos') {
-                    this.matches.sort((a, b) => a.autoPickupPos.localeCompare(b.autoPickupPos));
-                } else if (field === 'autoCS') {
-                    this.matches.sort((a, b) => a.autoCS.localeCompare(b.autoCS));
-                } else if (field === 'gpAutoTotal') {
-                    this.matches.sort((a, b) => a.gpAutoTotal - b.gpAutoTotal);
-                } else if (field === 'gpAutoScore') {
-                    this.matches.sort((a, b) => a.gpAutoScore - b.gpAutoScore);
-                } else if (field === 'gpTeleopTotal') {
-                    this.matches.sort((a, b) => a.gpTeleopTotal - b.gpTeleopTotal);
-                } else if (field === 'gpTeleopScore') {
-                    this.matches.sort((a, b) => a.gpTeleopScore - b.gpTeleopScore);
-                } else if (field === 'gpTotal') {
-                    this.matches.sort((a, b) => a.gpTotal - b.gpTotal);
-                } else if (field === 'gpTotalScore') {
-                    this.matches.sort((a, b) => a.gpTotalScore - b.gpTotalScore);
-                } else if (field === 'community') {
-                    this.matches.sort((a, b) => Number(a.community) - Number(b.community));
-                } else if (field === 'pickupType') {
-                    this.matches.sort((a, b) => a.pickupType.localeCompare(b.pickupType));
-                } else if (field === 'endgameStartTime') {
-                    this.matches.sort((a, b) => a.endgameStartTime.localeCompare(b.endgameStartTime));
-                } else if (field === 'estCycleTime') {
-                    this.matches.sort((a, b) => a.estCycleTime - b.estCycleTime);
-                } else if (field === 'scoutName') {
-                    this.matches.sort((a, b) => a.scoutName.localeCompare(b.scoutName));
-                } else if (field === 'endgameCS') {
-                    this.matches.sort((a, b) => a.endgameCS.localeCompare(b.endgameCS));
-                } else if (field === 'defence') {
-                    this.matches.sort((a, b) => a.defence.localeCompare(b.defence));
-                } else if (field === 'defenceType') {
-                    this.matches.sort((a, b) => a.defenceType.localeCompare(b.defenceType));
-                } else if (field === 'CSCycle') {
-                    this.matches.sort((a, b) => Number(a.CSCycle) - Number(b.CSCycle));
-                } else if (field === 'win') {
-                    this.matches.sort((a, b) => Number(a.win) - Number(b.win));
-                } else if (field === 'comments') {
-                    this.matches.sort((a, b) => a.comments.localeCompare(b.comments));
-                }
-            } else if (this.sortDirection === 'DESC') {
-                if (field === 'teamNum') {
-                    this.matches.sort((a, b) => b.teamNum - a.teamNum);
-                } else if (field === 'matchNum') {
-                    this.matches.sort((a, b) => b.matchNum - a.matchNum);
-                } else if (field === 'autoStartPos') {
-                    this.matches.sort((a, b) => b.autoStartPos.localeCompare(a.autoStartPos));
-                } else if (field === 'autoPickupPos') {
-                    this.matches.sort((a, b) => b.autoPickupPos.localeCompare(a.autoPickupPos));
-                } else if (field === 'autoCS') {
-                    this.matches.sort((a, b) => b.autoCS.localeCompare(a.autoCS));
-                } else if (field === 'gpAutoTotal') {
-                    this.matches.sort((a, b) => b.gpAutoTotal - a.gpAutoTotal);
-                } else if (field === 'gpAutoScore') {
-                    this.matches.sort((a, b) => b.gpAutoScore - a.gpAutoScore);
-                } else if (field === 'gpTeleopTotal') {
-                    this.matches.sort((a, b) => b.gpTeleopTotal - a.gpTeleopTotal);
-                } else if (field === 'gpTeleopScore') {
-                    this.matches.sort((a, b) => b.gpTeleopScore - a.gpTeleopScore);
-                } else if (field === 'gpTotal') {
-                    this.matches.sort((a, b) => b.gpTotal - a.gpTotal);
-                } else if (field === 'gpTotalScore') {
-                    this.matches.sort((a, b) => b.gpTotalScore - a.gpTotalScore);
-                } else if (field === 'community') {
-                    this.matches.sort((a, b) => Number(b.community) - Number(a.community));
-                } else if (field === 'pickupType') {
-                    this.matches.sort((a, b) => b.pickupType.localeCompare(a.pickupType));
-                } else if (field === 'endgameStartTime') {
-                    this.matches.sort((a, b) => b.endgameStartTime.localeCompare(a.endgameStartTime));
-                } else if (field === 'estCycleTime') {
-                    this.matches.sort((a, b) => b.estCycleTime - a.estCycleTime);
-                } else if (field === 'scoutName') {
-                    this.matches.sort((a, b) => b.scoutName.localeCompare(a.scoutName));
-                } else if (field === 'endgameCS') {
-                    this.matches.sort((a, b) => b.endgameCS.localeCompare(a.endgameCS));
-                } else if (field === 'defence') {
-                    this.matches.sort((a, b) => b.defence.localeCompare(a.defence));
-                } else if (field === 'defenceType') {
-                    this.matches.sort((a, b) => b.defenceType.localeCompare(a.defenceType));
-                } else if (field === 'CSCycle') {
-                    this.matches.sort((a, b) => Number(b.CSCycle) - Number(a.CSCycle));
-                } else if (field === 'win') {
-                    this.matches.sort((a, b) => Number(b.win) - Number(a.win));
-                } else if (field === 'comments') {
-                    this.matches.sort((a, b) => b.comments.localeCompare(a.comments));
-                }
-            }
-
-            this.createMatches();
-        },
-
-
         createMatches() {
             this.bMatch = [];
             this.rMatch = [];
@@ -403,17 +289,30 @@ export default {
                     this.rMatch.push(report);
                 }
             })
-            this.checkWin();
+            
 
         },
 
         checkWin() {
-            if (this.bMatch[0].win && !this.rMatch[0].win) {
-                this.Win = "Blue Alliance"
-            } else if (!this.bMatch[0].win && this.rMatch[0].win) {
-                this.Win = "Red Alliance"
-            } else {
-                this.Win = 'Tie'
+            let bCount = 0;
+            let rCount = 0;
+            this.bMatch.forEach( x =>{
+                if(x.win){
+                    bCount++
+                }
+            });
+            this.rMatch.forEach( x =>{
+                if(x.win){
+                    rCount++
+                }
+            });
+           
+            if(bCount > rCount){
+                return "Blue Alliance";
+            }else if(rCount > bCount){
+                return "Red Alliance";
+            }else{
+                return "Tie";
             }
             
         }
@@ -422,10 +321,8 @@ export default {
 
         const route = useRoute();
         this.matchNum = route.params.num;
-        this.sortDirection = 'ASC'
-
-        this.currentSortField = 'matchNum';
-        this.sortDirection = 'DESC';
+        
+        
 
     },
 
@@ -433,8 +330,8 @@ export default {
 
         this.matches = await MatchDataService.getMatches();
         await MatchDataService.getMatches().then(this.createMatches());
-
-
+       
+        this.Win = this.checkWin();
     }
 
 }

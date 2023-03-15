@@ -1,4 +1,6 @@
 <template>
+
+
     <div class="container has-text-centered pt-4">
   
       <div class="card has-background-dark has-text-white has-text-weight-bold-bis mx-auto mt-3 pt-2 pb-3 px-4"
@@ -49,17 +51,13 @@
   </template>
   <script>
   
-  
   import MatchDataService from '../services/MatchDataService';
-  
 
-  
   export default {
     data() {
       return {
         matches: Array,
         matchData: Array,
-        
         sortDirection: String,
       };
     },
@@ -130,17 +128,32 @@
   
   
   
-        if (teamRed[0].win) {
-          winner = "Red";
-        } else if (teamBlue[0].win) {
-          winner = "Blue";
-        } else {
-          winner = "Tie";
-  
-        }
+         let bCount = 0;
+            let rCount = 0;
+            teamBlue.forEach( x =>{
+                if(x.win){
+                    bCount++
+                }
+            });
+            teamRed.forEach( x =>{
+                if(x.win){
+                    rCount++
+                }
+            });
+           
+            if(bCount > rCount){
+                winner = "Blue";
+            }else if(rCount > bCount){
+                 winner = "Red";
+            }else{
+                winner = "Tie";
+            }
+
+       
+        
   
         let Match = {
-          matchNum: teamBlue[0].matchNum === Number ? teamBlue[0].matchNum : teamRed[0].matchNum,
+          matchNum:  isNaN(teamBlue[0].matchNum) ?  teamRed[0].matchNum : teamBlue[0].matchNum,
           r1: r1,
           r2: r2,
           r3: r3,

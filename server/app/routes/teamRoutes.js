@@ -25,4 +25,12 @@ module.exports = app => {
     router.delete("/", Teams.deleteAll);
   
     app.use('/api/Teams', router);
+    
+    app.get('/*', function(req, res) {
+      res.sendFile(path.join(__dirname, '../assets/index.html'), function(err) {
+        if (err) {
+          res.status(500).send(err)
+        }
+      })
+    })
   };

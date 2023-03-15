@@ -18,8 +18,10 @@ module.exports = mongoose => {
           gpTeleopScore: Number,
           gpTotalScore: Number,
           autoStartPos: String,
+
           pickupType: Array,
-          autoPickupPos: Array,
+          autoPickupPos: Array, 
+          
           CSCycle: Boolean,
           endgameStartTime: Number,
           estCycleTime: Number,
@@ -30,9 +32,11 @@ module.exports = mongoose => {
           win: Boolean,
           comments: String
         },
-        { timestamps: true }
+        { timestamps: true },
+        { typeKey: '$type' }
       )
     );
-  
+
+    
     return Match;
   };
