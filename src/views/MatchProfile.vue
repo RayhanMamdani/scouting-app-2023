@@ -4,7 +4,7 @@
         <Navbar />
     </nav>
     <div class="has-text-centered  p-2">
-        <h1 class="title my-5 has-text-white">Match Summary</h1>
+        <h1 class="title my-5 has-text-white">Match #{{matchNum}}</h1>
         
     </div>
     <div class="container">

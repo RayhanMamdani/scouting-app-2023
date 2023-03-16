@@ -1,6 +1,4 @@
 <template>
-
-
     <div class="container has-text-centered pt-4">
   
       <div class="card has-background-dark has-text-white has-text-weight-bold-bis mx-auto mt-3 pt-2 pb-3 px-4"

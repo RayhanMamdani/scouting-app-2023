@@ -2,9 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = __dirname + '/app/dist/';
-
+const p = require('path');
 const app = express();
-
 app.use(express.static(path));
 
 var corsOptions = {
@@ -46,3 +45,12 @@ db.mongoose
     console.log("Cannot connect to the database!", err);
     process.exit();
   });
+
+
+  app.get('/*', function(req, res) {
+    res.sendFile(p.join(__dirname, 'app/dist/index.html'), function(err) {
+      if (err) {
+        res.status(500).send(err)
+      }
+    })
+  })
