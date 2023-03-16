@@ -5,7 +5,7 @@
   
       <div class="card has-background-dark has-text-white has-text-weight-bold-bis mx-auto mt-3 pt-2 pb-3 px-4"
         style="border-radius: 8px;">
-        <h1 class="title is-1 is-size-2-mobile m-3 mb-4 has-text-white is-centered">Matches</h1>
+        <h1 class="title is-1 is-size-2-mobile m-3 mb-4 has-text-white is-centered"> Matches</h1>
         <table class="table has-background-dark is-bordered is-hoverable is-fullwidth has-text-white-ter">
           <thead>
             <tr>

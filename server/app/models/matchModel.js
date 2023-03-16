@@ -19,8 +19,8 @@ module.exports = mongoose => {
           gpTotalScore: Number,
           autoStartPos: String,
 
-          pickupType: Array,
-          autoPickupPos: Array, 
+          pickupType: [String],
+          autoPickupPos: [String], 
           
           CSCycle: Boolean,
           endgameStartTime: Number,
