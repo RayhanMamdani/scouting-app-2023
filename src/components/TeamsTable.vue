@@ -3,7 +3,7 @@
     <div class="container">
         <div class="box has-background-dark my-4 ">
             <div class="has-text-centered">
-                <h1 class="title mb-2 has-text-light" >Newmarket Teams</h1>
+                <h1 class="title mb-2 has-text-light" > Teams</h1>
             </div>
             <div class="columns">
                 <input type="text" class="input column is-one-quarter" name="teamFilter" id="teamFilter" placeholder="Filter by team number" @input="filterTeams();">

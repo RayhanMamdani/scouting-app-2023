@@ -4,7 +4,7 @@ class MatchDataService {
   async getMatches() {
     const res = await http.get("/matches");
     const data = res.data;
-   
+  
     return data;
   }
 

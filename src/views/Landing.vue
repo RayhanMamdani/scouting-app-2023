@@ -27,7 +27,7 @@
               <h2 class="title is-4 has-text-white">Match Search</h2>
               <div class="field has-addons">
                 <div class="control ">
-                  <input class="input " type="number" id="matchNum" placeholder="Match # ">
+                  <input class="input " type="number" id="matchNum" placeholder="Enter Match # ">
                 </div>
                 <div class="control">
                   <a  @click ="matchSearch()" class="button is-light">

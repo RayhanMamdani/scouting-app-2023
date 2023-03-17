@@ -22,22 +22,22 @@
               <h6 @click="this.$router.push(`match/${data.matchNum}`)" >{{ data.matchNum }}</h6>
             </td>
             <td class="has-text-danger">
-              <h6 class="underline" >{{ data.r1 }}</h6>
+              <h6 @click="this.$router.push(`team/${data.r1}`)" >{{ data.r1 }}</h6>
             </td>
             <td class="has-text-danger">
-              <h6 class="" >{{ data.r2 }}</h6>
+              <h6 @click="this.$router.push(`team/${data.r2}`)"  >{{ data.r2 }}</h6>
             </td>
             <td class="has-text-danger">
-              <h6 class="underline" >{{ data.r3 }}</h6>
+              <h6 @click="this.$router.push(`team/${data.r3}`)"  >{{ data.r3 }}</h6>
             </td>
             <td class="has-text-info">
-              <h6 class="underline" >{{ data.b1 }}</h6>
+              <h6 @click="this.$router.push(`team/${data.b1}`)"  >{{ data.b1 }}</h6>
             </td>
             <td class="has-text-info">
-              <h6 class="underline" >{{ data.b2 }}</h6>
+              <h6 @click="this.$router.push(`team/${data.b2}`)"  >{{ data.b2 }}</h6>
             </td>
             <td class="has-text-info">
-              <h6 class="underline" >{{ data.b3 }}</h6>
+              <h6 @click="this.$router.push(`team/${data.b3}`)"  >{{ data.b3 }}</h6>
             </td>
             <td>
               <h6>{{ data.win }}</h6>

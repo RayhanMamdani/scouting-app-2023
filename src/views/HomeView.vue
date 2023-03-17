@@ -45,11 +45,14 @@
 <script>
 import { useTournamentStore } from '../stores/tournamentData'
 import{useGameDataStore} from '../stores/gameData'
+import TeamDataService from '../services/TeamDataService'
 import { createDOMCompilerError } from '@vue/compiler-dom'
 
 export default {
-  setup() {
-    
+  data(){
+    return{
+      teams: Array
+    }
   },
 
   methods: {
@@ -75,7 +78,9 @@ export default {
     }
 
   },
-  created(){
+  async created(){
+      this.teams = await TeamDataService.getTeams();
+      await TeamDataService.getTeams().then(useTournamentStore().getTeams(this.teams));
     
   }
 
