@@ -31,7 +31,7 @@
     <input class="input" type="number" id="teamNum" placeholder="Find a team">
   </div>
   <div class="control">
-    <a  @click ="teamSearch()" class="button is-light">
+    <a id="go" @click ="teamSearch()" class="button is-light">
       Go
     </a>
   </div>
@@ -45,7 +45,6 @@
 
 <script>
 
-
 export default {
 
   data() {
@@ -58,7 +57,9 @@ export default {
   methods: {
     teamSearch(){
       let teamNum = document.getElementById('teamNum').value;
-      this.$router.push('/team/'+ teamNum)
+      this.$router.push(`/team/${teamNum}`)
+    
+      
     },
   },
   
