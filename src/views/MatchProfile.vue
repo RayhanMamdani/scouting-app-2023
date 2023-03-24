@@ -47,7 +47,7 @@
                     </thead>
                     <tbody v-for="data in rMatch">
                         <td>
-                            <h6 @click="this.$router.push(`team/${data.teamNum}`)" >{{ data.teamNum }}</h6>
+                            <h6 @click=" toTeamProfile(data.teamNum)" >{{ data.teamNum }}</h6>
                         </td>
                         <td>
                             <h6>{{ data.autoStartPos }}</h6>
@@ -157,7 +157,7 @@
                     </thead>
                     <tbody v-for="data in bMatch">
                         <td>
-                            <h6 @click="this.$router.push(`team/${data.teamNum}`)">{{ data.teamNum }}</h6>
+                            <h6 @click="this.$router.push(`/team/${data.teamNum}`)">{{ data.teamNum }}</h6>
                         </td>
                         <td>
                             <h6>{{ data.autoStartPos }}</h6>
@@ -257,6 +257,9 @@ export default {
 
     methods: {
 
+        toTeamProfile(num){
+        this.$router.push(`/team/${num}`)
+        },
      displayArray(arr) {
   let counts = {};
   let maxCount = 0;

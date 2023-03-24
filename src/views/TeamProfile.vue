@@ -124,7 +124,7 @@
                          </thead>
                          <tbody v-for="data in teamMatches" class=" has-text-white">
                             <td>
-                                 <h6>{{ data.matchNum }}</h6>
+                                 <h6 @click="toMatchProfile(data.matchNum)">{{ data.matchNum }}</h6>
                              </td>
                              <td>
                                  <h6>{{ data.autoStartPos }}</h6>
@@ -211,6 +211,9 @@ export default {
     },
 
     methods: {
+        toMatchProfile(num){
+        this.$router.push(`/match/${num}`)
+        },
 
      displayArray(arr) {
   let counts = {};
@@ -265,7 +268,7 @@ export default {
         this.matches = await MatchDataService.getMatches();
         await TeamDataService.getTeams().then(this.getTeam(this.teamNum));
         await MatchDataService.getMatches().then(this.getMatches(this.teamNum));
-        console.log(this.teamMatches);
+      
       
     }
 
@@ -279,4 +282,6 @@ export default {
     color: rgb(255, 255, 255);
     font-weight: bold;
 }
+
+
 </style>
