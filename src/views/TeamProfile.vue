@@ -235,7 +235,7 @@ export default {
 
         getTeam(teamnum){
             this.teams.forEach(x => {
-                if(x.teamNum = teamnum){
+                if(x.teamNum == teamnum){
                     this.team = x;
                 }
             })
@@ -279,8 +279,4 @@ export default {
     color: rgb(255, 255, 255);
     font-weight: bold;
 }
-th {
-    
-}
-
 </style>

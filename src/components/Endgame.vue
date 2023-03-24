@@ -174,12 +174,12 @@ export default {
     setWin(state) {
       gameData.setWin(state);
     },
-    async createMatch() {
+    createMatch() {
       gameData.setAutoScore();
       if(confirm("Are you sure you want to submit?") ){
       MatchDataService.create(gameData.matchData);
       
-      this.matches = await MatchDataService.getMatches(); // for some reason, this is taking a while and everything else is going ahead while this is still loading, so creating a match for a new team breaks it
+      this.matches = MatchDataService.getMatches(); // for some reason, this is taking a while and everything else is going ahead while this is still loading, so creating a match for a new team breaks it
       this.updateTeam();
       this.resetMatchData();
       this.$router.push('/')
@@ -200,7 +200,7 @@ export default {
       TeamDataService.update(teamID, this.teamAvg())
     },
     teamAvg() {
-    
+      teamData.$reset();
       this.matches.forEach(match => {
         if (match.teamNum == gameData.teamNum) {
           // add arrays to teamData.js for every team avg attribute and then average them here
@@ -227,6 +227,7 @@ export default {
           teamData.winPush(match.win);
         }
       })
+      console.log(teamData.endgameStartTimeArray)
       
       let team = {
         teamNum: gameData.teamNum,
