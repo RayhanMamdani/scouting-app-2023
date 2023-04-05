@@ -330,7 +330,7 @@ import TeamDataService from '../services/TeamDataService.js'
         this.createTeams();
         this.sort("teamNum");
     },
-    components: { AddTeams }
+    
 }
     /*const DeleteButton = defineCustomElement({
         props: {
