@@ -49,7 +49,13 @@ const router = createRouter({
       name: 'Page Not Found',
       component: () =>
           import ('../views/PageNotFound.vue')
-  }
+  },
+  {
+    path: '/matchesTable',
+    name: 'matchesTable',
+    component: () =>
+        import ('../views/MatchesTable.vue')
+}
    
   ]
 })

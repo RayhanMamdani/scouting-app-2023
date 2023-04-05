@@ -21,6 +21,9 @@
       <a class="navbar-item" @click = " this.$router.push('/matches')">
         Matches
       </a>
+      <a class="navbar-item" @click = " this.$router.push('/matchesTable')">
+        Matches Table
+      </a>
 
 
        

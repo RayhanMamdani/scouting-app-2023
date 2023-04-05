@@ -1,6 +1,6 @@
 module.exports = mongoose => {
     const Team = mongoose.model(
-      "humberteam",
+      "FOPCteam",
       mongoose.Schema(
         {
             // PUT WHATEVER TEAM DATA WE NEED IN HERE !!! 

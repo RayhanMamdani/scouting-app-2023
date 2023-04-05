@@ -3,7 +3,7 @@
         <Navbar/>
     </nav>
     <section>
-         <MatchesTable/> 
+         <OldMatchesTable/> 
       
 
     </section>
@@ -11,7 +11,7 @@
 
 <script setup>
     import Navbar from '../components/Navbar.vue';
-    import MatchesTable from '../components/MatchesTable.vue';
+    import OldMatchesTable from '../components/OldMatchTable.vue';
     
 
 </script>

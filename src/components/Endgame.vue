@@ -227,7 +227,7 @@ export default {
           teamData.winPush(match.win);
         }
       })
-      console.log(teamData.endgameStartTimeArray)
+      
       
       let team = {
         teamNum: gameData.teamNum,
@@ -271,7 +271,7 @@ export default {
       return mode;
     },
     findAvg(array) {
-      let validData = array.filter(data => data != null);
+      let validData = array.filter(data => data != null && data !== undefined && data !== "");
       let total = 0;
       validData.forEach(number => {
         total += number;
