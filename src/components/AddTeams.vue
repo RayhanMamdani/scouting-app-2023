@@ -18,15 +18,17 @@ const gameData = useGameDataStore();
 const teamData = useTeamDataStore();
 const tournamentData = useTournamentStore();
 
-const addTeam = () => {
-    let teamNum = document.querySelector('#teamNumber').value;
-    console.log(teamNum)
+methods: {
+
+ addTeam = () => {
+    let teamNum = document.getElementById('teamNumber').value;
+    console.log("Add Team: " + teamNum);
     teamData.setTeamNum(teamNum);
     tournamentData.teamPush(teamNum);
     console.log(teamData.teamData)
     TeamDataService.create(teamData.teamData);
     teamData.$reset;
-    document.getElementById("teamNum").value = null;
+    //document.getElementById("teamNum").value = null;
     /*if (!tournamentData.teamCheck(teamNum)) {
         teamData.setTeamNum(teamNum);
         tournamentData.teamPush(teamNum);
@@ -35,6 +37,8 @@ const addTeam = () => {
     } else {
         alert('Please add a new team');
     }*/
+}
+
 }
 </script>
 
