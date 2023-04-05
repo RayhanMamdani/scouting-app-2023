@@ -5,7 +5,7 @@
             <div class="has-text-centered">
                 <h1 class="title mb-2 has-text-light" > Teams</h1>
             </div>
-            <AddTeams/>
+            
             <div class="columns">
                 <input type="text" class="input column is-one-quarter" name="teamFilter" id="teamFilter" placeholder="Filter by team number" @input="filterTeams();">
             </div>
@@ -55,7 +55,7 @@
 import MatchDataService from '../services/MatchDataService';
 import TeamDataService from '../services/TeamDataService.js'
 
-import AddTeams from './AddTeams.vue';
+
     //import { defineCustomElement } from 'vue';
 
     export default {

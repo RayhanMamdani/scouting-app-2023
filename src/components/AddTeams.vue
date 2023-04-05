@@ -1,7 +1,7 @@
 <template>
     <div class="columns">
         <div class="column is-7">
-            <input type="number" class="input" typlaceholder="Team Number" id="teamNum">
+            <input type="number" class="input" placeholder="Team Number" id="teamNum">
         </div>
         <div class="column">
             <button @click="addTeam" class="button is-normal is-responsive">Add Team</button>
@@ -18,14 +18,16 @@ const gameData = useGameDataStore();
 const teamData = useTeamDataStore();
 const tournamentData = useTournamentStore();
 
-const addTeam = () => {
-    let teamNum = document.querySelector('#teamNum').value;
-    console.log(teamNum);
+methods: {
+
+ addTeam = () => {
+    let teamNum = document.getElementById('teamNum').value;
+    console.log("Add Team: " + teamNum);
     teamData.setTeamNum(teamNum);
     tournamentData.teamPush(teamNum);
     TeamDataService.create(teamData.teamData);
     teamData.$reset;
-    document.getElementById("teamNum").value = null;
+    //document.getElementById("teamNum").value = null;
     /*if (!tournamentData.teamCheck(teamNum)) {
         teamData.setTeamNum(teamNum);
         tournamentData.teamPush(teamNum);
@@ -34,6 +36,8 @@ const addTeam = () => {
     } else {
         alert('Please add a new team');
     }*/
+}
+
 }
 </script>
 
