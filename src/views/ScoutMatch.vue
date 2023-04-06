@@ -21,7 +21,7 @@
 
     </div>
 
-    <div class="columns">
+    <div class="columns is-centered is-flex">
         <div class="column is-one-quarter py-5 px-3">
             <div class="tile is-parent is-vertical is-pulled-right is-centered card"
                 v-show="gameData.gameState === 'teleop'">
@@ -43,7 +43,7 @@
 
         </div>
 
-        <div class=" column box container">
+        <div class=" column is-one-half box container">
             <Grid v-show="gameData.gameState == 'auto' || gameData.gameState === 'teleop'" />
             <Endgame v-show="gameData.gameState == 'endgame'" />
         </div>
@@ -78,7 +78,7 @@
 
     </div>
 
-    <div class="columns">
+    <div class="columns is-centered is-flex">
         <div class="column is-one-quarter">
            
         </div>
