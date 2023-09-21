@@ -8,6 +8,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView :key="$route.fullPath" />
 </template>
 
-<style scoped>
+<style scoped> 
+
 
 </style>
