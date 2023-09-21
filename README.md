@@ -1,6 +1,6 @@
 # 7558-scouting-app-2023
 
-Scouting app for the 2023 Charged Up season
+Scouting app for the 2024 Charged Up season
 
 ## Recommended IDE Setup
 
