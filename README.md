@@ -1,6 +1,7 @@
 # 7558-scouting-app-2023
 
 Scouting app for the 2024 Charged Up season
+test commit
 
 ## Recommended IDE Setup
 
