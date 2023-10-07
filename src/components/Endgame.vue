@@ -186,7 +186,7 @@ export default {
       console.log(this.matches)
       this.updateTeam();
       this.resetMatchData();
-      // this.$router.push('/')
+      this.$router.push('/')
       }
       
     },

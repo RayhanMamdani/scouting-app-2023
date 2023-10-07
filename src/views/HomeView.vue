@@ -58,8 +58,24 @@ export default {
   },
 
   methods: {
-    
-    scoutCheck() {
+    async checkinArr(teamNum){
+
+      let teamarr = [];
+       teamarr = await http.get("teams");
+       console.log(teamarr)
+       console.log(teamNum)
+      for (let i = 0; i < teamarr.data.length; i++){
+        console.log(teamarr)
+        console.log(teamarr.data[i].teamNum)
+        console.log(parseInt(teamNum) == teamarr.data[i].teamNum)
+        if (parseInt(teamNum) == teamarr.data[i].teamNum){
+          return false;
+        }
+      }
+return true;
+
+    },
+    async scoutCheck() {
       let matchNum = document.getElementById('matchNum').value
       let teamNum = document.getElementById('teamNum').value
       let matchSide = document.getElementById('matchSide').value
@@ -69,6 +85,21 @@ export default {
 
 
       if (useTournamentStore().matchCheck(matchNum)) { // don't useuseTournamentStore().teamCheck(teamNum)
+      
+  let isIn = true;
+      let teamarr = [];
+       teamarr = await http.get("teams");
+       console.log(teamarr)
+       console.log(teamNum)
+      for (let i = 0; i < teamarr.data.length; i++){
+        console.log(teamarr)
+        console.log(teamarr.data[i].teamNum)
+        console.log(parseInt(teamNum) == teamarr.data[i].teamNum)
+        if (parseInt(teamNum) == teamarr.data[i].teamNum){
+          isIn = false;
+        }
+      }
+      if (isIn){
       http.post("teams", {
         teamNum: teamNum,
         modeCommunity: false,
@@ -96,6 +127,8 @@ export default {
       .catch((error) => {
     console.error('Error making POST request:', error);
         });
+      }
+      
         this.$router.push('/ScoutMatch')
         useGameDataStore().setMatchNum(matchNum);
         useGameDataStore().setTeamNum(teamNum);
