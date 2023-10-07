@@ -7,7 +7,7 @@ const app = express();
 app.use(express.static(path));
 
 var corsOptions = {
-  origin: "http://localhost:5175"
+  origin: "*"
 };
 
 app.use(cors(corsOptions));

@@ -174,15 +174,19 @@ export default {
     setWin(state) {
       gameData.setWin(state);
     },
-    createMatch() {
+    async createMatch() {
       gameData.setAutoScore();
       if(confirm("Are you sure you want to submit?") ){
+        this.matches = await MatchDataService.getMatches(); // for some reason, this is taking a while and everything else is going ahead while this is still loading, so creating a match for a new team breaks it
+
+    console.log(this.matches)
+    console.log(this.teams)
       MatchDataService.create(gameData.matchData);
       
-      this.matches = MatchDataService.getMatches(); // for some reason, this is taking a while and everything else is going ahead while this is still loading, so creating a match for a new team breaks it
+      console.log(this.matches)
       this.updateTeam();
       this.resetMatchData();
-      this.$router.push('/')
+      // this.$router.push('/')
       }
       
     },
@@ -196,7 +200,7 @@ export default {
           teamID = team._id;
         }
       })
-      
+      console.log(this.teamAvg())
       TeamDataService.update(teamID, this.teamAvg())
     },
     teamAvg() {
@@ -311,7 +315,7 @@ export default {
   },
   async mounted() {
     this.teams = await TeamDataService.getTeams();
-    this.matches = await MatchDataService.getMatches();
+    this.matches = await MatchDataService.getMatches()
   }
 }
 const gameData = useGameDataStore();

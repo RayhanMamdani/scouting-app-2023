@@ -46,7 +46,9 @@
 import { useTournamentStore } from '../stores/tournamentData'
 import{useGameDataStore} from '../stores/gameData'
 import TeamDataService from '../services/TeamDataService'
+import axios from 'axios'
 import { createDOMCompilerError } from '@vue/compiler-dom'
+import http from "../http-common";
 
 export default {
   data(){
@@ -66,7 +68,34 @@ export default {
      
 
 
-      if ( useTournamentStore().teamCheck(teamNum) && useTournamentStore().matchCheck(matchNum)) {
+      if (useTournamentStore().matchCheck(matchNum)) { // don't useuseTournamentStore().teamCheck(teamNum)
+      http.post("teams", {
+        teamNum: teamNum,
+        modeCommunity: false,
+            modeAutoCS: "",
+            avgGpTotal: 0,
+            avgGpAutoTotal: 0,
+            avgGpTeleopTotal: 0,
+            avgGpAutoScore: 0,
+            avgGpTeleopScore: 0,
+            avgGpTotalScore: 0,
+            modeAutoStartPos: "",
+            modePickupType: "",
+            modeAutoPickupPos: "",
+            avgEndgameStartTime: 0,
+            avgEstCycleTime: 0,
+            modeEndgameCS: "",
+            modeDefence: "",
+            modeDefenceType: "",
+            modeCSCycle: false,
+            modeWin: false,
+      })
+    .then((response) => {
+    console.log('POST request successful:', response.data);
+       })
+      .catch((error) => {
+    console.error('Error making POST request:', error);
+        });
         this.$router.push('/ScoutMatch')
         useGameDataStore().setMatchNum(matchNum);
         useGameDataStore().setTeamNum(teamNum);
