@@ -17,7 +17,7 @@
 </script>
 
 <style scoped>
-div {
+div { 
   margin: auto;
 
 }
