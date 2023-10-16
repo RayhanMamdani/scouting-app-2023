@@ -1,6 +1,7 @@
 
 <template>
-  <div class=" is-flex ">
+
+<div class=" is-flex ">
 
   </div>
   <div class="container box mt-6 has-background-dark ">
@@ -49,7 +50,7 @@ import TeamDataService from '../services/TeamDataService'
 import axios from 'axios'
 import { createDOMCompilerError } from '@vue/compiler-dom'
 import http from "../http-common";
-
+import '../assets/style.css';
 export default {
   data(){
     return{
