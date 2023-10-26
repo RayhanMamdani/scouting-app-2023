@@ -25,6 +25,10 @@
         MATCHES TABLE
       </a>
 
+      <a class="navbar-item" @click = " this.$router.push('/about')">
+        ABOUT
+      </a>
+
 
        
     </div>

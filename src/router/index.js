@@ -55,6 +55,12 @@ const router = createRouter({
     name: 'matchesTable',
     component: () =>
         import ('../views/MatchesTable.vue')
+},
+{
+  path: '/about',
+  name: 'about',
+  component: () =>
+      import ('../views/about.vue')
 }
    
   ]

@@ -1,5 +1,8 @@
 
 <template>
+<nav>
+      <Navbar />
+    </nav>
 
 <div class=" is-flex ">
 
@@ -51,12 +54,15 @@ import axios from 'axios'
 import { createDOMCompilerError } from '@vue/compiler-dom'
 import http from "../http-common";
 import '../assets/style.css';
+import Navbar from "../components/Navbar.vue"
 export default {
   data(){
     return{
       teams: Array
     }
+
   },
+  components: { Navbar },
 
   methods: {
     async checkinArr(teamNum){
