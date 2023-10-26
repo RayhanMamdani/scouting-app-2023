@@ -15,7 +15,7 @@
     <div class="field ">
       <label class="label has-text-white">Team Number:</label>
       <div class="control ">
-        <input class="input has-background-grey has-text-white" type="number" id="teamNum">
+        <input class="input has-background-grey has-text-white" type="number" id="teamNum2">
       </div>
     </div>
 
@@ -84,7 +84,8 @@ return true;
     },
     async scoutCheck() {
       let matchNum = document.getElementById('matchNum').value
-      let teamNum = document.getElementById('teamNum').value
+      let teamNum = document.getElementById('teamNum2').value
+      console.log(document.getElementById('teamNum'))
       let matchSide = document.getElementById('matchSide').value
       document.getElementById('matchNum').value = null;
       document.getElementById('teamNum').value = null;
@@ -107,6 +108,7 @@ return true;
         }
       }
       if (isIn){
+        console.log(teamNum)
       http.post("teams", {
         teamNum: teamNum,
         modeCommunity: false,
