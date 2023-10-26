@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const path = __dirname + '/app/dist/';
+const path = __dirname + '/';
 const p = require('path');
 const app = express();
 app.use(express.static(path));
@@ -48,7 +48,7 @@ db.mongoose
 
 
   app.get('/*', function(req, res) {
-    res.sendFile(p.join(__dirname, 'app/dist/index.html'), function(err) {
+    res.sendFile(p.join(__dirname, '/index.html'), function(err) {
       if (err) {
         res.status(500).send(err)
       }
