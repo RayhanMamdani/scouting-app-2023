@@ -9,12 +9,7 @@
   <div id="page">
 
     <!--Background and Welcome messsage plus a small set of sentences-->
-    <section id="showcase" class="text-light text-center text-small-center ">
-      <div class="wrapper" style="min-height:500px">
-      <video src="../assets/ALT-F4.mp4"  autoplay muted ></video>
-    </div>
-     
-    </section>
+  
 
        <!-- ABOUT SECTION -->
 
