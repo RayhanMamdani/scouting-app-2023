@@ -61,7 +61,14 @@ const router = createRouter({
   name: 'about',
   component: () =>
       import ('../views/about.vue')
-}
+},
+
+{
+  path: '/api',
+  name: 'api',
+  component: () =>
+      import ('../views/BlueAlliance.vue')
+},
    
   ]
 })
